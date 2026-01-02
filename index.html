@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzierungs-Rechner | Ihr Finanzexperte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="8" fill="#587592"/>
+                    <path d="M15 25L25 15L35 25L25 35L15 25Z" fill="white" opacity="0.9"/>
+                    <circle cx="25" cy="25" r="6" fill="white"/>
+                </svg>
+                <span class="logo-text">Ihr Finanzexperte</span>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Start</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Finanzierungsart</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Details</div>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Kontakt</div>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <div class="step-circle">5</div>
+                    <div class="step-label">Fertig</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Step 1: Welcome -->
+            <div class="step-content active" id="step1">
+                <div class="hero-section">
+                    <h1 class="main-heading">Finden Sie Ihre ideale Finanzierung</h1>
+                    <p class="subtitle">In nur 3 Minuten zu Ihrem persönlichen Finanzierungsangebot</p>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">Beste Konditionen durch Vergleich</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">Unabhängige Beratung</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">Kostenlose Erstberatung</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="nextStep()">Jetzt starten</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Financing Type -->
+            <div class="step-content" id="step2">
+                <h2 class="section-heading">Welche Art von Finanzierung benötigen Sie?</h2>
+                <p class="section-subtitle">Wählen Sie die passende Option für Ihr Vorhaben</p>
+
+                <div class="options-grid">
+                    <div class="option-card" onclick="selectFinancingType('kauf')">
+                        <div class="option-icon">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+                                <path d="M30 15L20 25H25V40H35V25H40L30 15Z" fill="#587592"/>
+                            </svg>
+                        </div>
+                        <h3 class="option-title">Kauf</h3>
+                        <p class="option-description">Finanzierung für den Kauf einer Immobilie</p>
+                        <div class="option-radio">
+                            <input type="radio" name="financingType" value="kauf" id="kauf">
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="selectFinancingType('bau')">
+                        <div class="option-icon">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+                                <path d="M20 40V25L30 18L40 25V40H20Z" fill="#587592"/>
+                            </svg>
+                        </div>
+                        <h3 class="option-title">Bau/Errichtung</h3>
+                        <p class="option-description">Finanzierung für Neubau oder Errichtung</p>
+                        <div class="option-radio">
+                            <input type="radio" name="financingType" value="bau" id="bau">
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="selectFinancingType('umschuldung')">
+                        <div class="option-icon">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+                                <path d="M25 20L35 30L25 40M35 20V40" stroke="#587592" stroke-width="3"/>
+                            </svg>
+                        </div>
+                        <h3 class="option-title">Umschuldung</h3>
+                        <p class="option-description">Optimierung bestehender Kredite</p>
+                        <div class="option-radio">
+                            <input type="radio" name="financingType" value="umschuldung" id="umschuldung">
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="selectFinancingType('sanierung')">
+                        <div class="option-icon">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+                                <path d="M25 35L30 40L40 25M20 20H40V40H20V20Z" stroke="#587592" stroke-width="2.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="option-title">Sanierung</h3>
+                        <p class="option-description">Finanzierung für Renovierung & Sanierung</p>
+                        <div class="option-radio">
+                            <input type="radio" name="financingType" value="sanierung" id="sanierung">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="previousStep()">Zurück</button>
+                    <button class="btn-primary" onclick="nextStep()" id="step2Next" disabled>Weiter</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Financing Details -->
+            <div class="step-content" id="step3">
+                <h2 class="section-heading">Details zu Ihrer Finanzierung</h2>
+                <p class="section-subtitle">Geben Sie uns einige Informationen zu Ihrem Vorhaben</p>
+
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="loanAmount" class="form-label">
+                            Benötigte Kreditsumme
+                            <span class="form-hint">Wie viel möchten Sie finanzieren?</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                type="range"
+                                id="loanAmountRange"
+                                min="10000"
+                                max="1000000"
+                                step="5000"
+                                value="200000"
+                                oninput="updateLoanAmount(this.value)"
+                                class="range-slider"
+                            >
+                            <div class="range-values">
+                                <span>€ 10.000</span>
+                                <span class="range-current" id="loanAmountDisplay">€ 200.000</span>
+                                <span>€ 1.000.000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="equity" class="form-label">
+                            Verfügbares Eigenkapital
+                            <span class="form-hint">Wie viel Eigenkapital können Sie einbringen?</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                type="range"
+                                id="equityRange"
+                                min="0"
+                                max="500000"
+                                step="5000"
+                                value="40000"
+                                oninput="updateEquity(this.value)"
+                                class="range-slider"
+                            >
+                            <div class="range-values">
+                                <span>€ 0</span>
+                                <span class="range-current" id="equityDisplay">€ 40.000</span>
+                                <span>€ 500.000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration" class="form-label">
+                            Gewünschte Laufzeit
+                            <span class="form-hint">Über welchen Zeitraum möchten Sie finanzieren?</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                type="range"
+                                id="durationRange"
+                                min="5"
+                                max="35"
+                                step="1"
+                                value="25"
+                                oninput="updateDuration(this.value)"
+                                class="range-slider"
+                            >
+                            <div class="range-values">
+                                <span>5 Jahre</span>
+                                <span class="range-current" id="durationDisplay">25 Jahre</span>
+                                <span>35 Jahre</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calculation-result">
+                        <div class="result-label">Geschätzte monatliche Rate:</div>
+                        <div class="result-value" id="monthlyRate">€ 735</div>
+                        <div class="result-hint">*Unverbindliche Beispielrechnung</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="previousStep()">Zurück</button>
+                    <button class="btn-primary" onclick="nextStep()">Weiter</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Contact Details -->
+            <div class="step-content" id="step4">
+                <h2 class="section-heading">Fast geschafft!</h2>
+                <p class="section-subtitle">Hinterlassen Sie uns Ihre Kontaktdaten für ein individuelles Angebot</p>
+
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">Vorname *</label>
+                            <input type="text" id="firstName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">Nachname *</label>
+                            <input type="text" id="lastName" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-Mail-Adresse *</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Telefonnummer *</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+43" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Nachricht (optional)</label>
+                        <textarea id="message" class="form-textarea" rows="4" placeholder="Gibt es noch etwas, das wir wissen sollten?"></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacy" required>
+                            <span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiert *</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="marketing">
+                            <span>Ich möchte über Neuigkeiten und Angebote informiert werden</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="previousStep()">Zurück</button>
+                    <button class="btn-primary" onclick="submitForm()">Angebot anfordern</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Thank You -->
+            <div class="step-content" id="step5">
+                <div class="success-container">
+                    <div class="success-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="40" r="38" fill="#E8F5E9"/>
+                            <path d="M25 40L35 50L55 30" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="section-heading">Vielen Dank für Ihre Anfrage!</h2>
+                    <p class="section-subtitle">Wir haben Ihre Anfrage erhalten und werden uns innerhalb von 24 Stunden bei Ihnen melden.</p>
+
+                    <div class="next-steps">
+                        <h3>Was passiert jetzt?</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">1</div>
+                                <div class="timeline-content">
+                                    <h4>Prüfung Ihrer Anfrage</h4>
+                                    <p>Unser Team prüft Ihre Angaben und bereitet Ihr individuelles Angebot vor.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">2</div>
+                                <div class="timeline-content">
+                                    <h4>Persönliche Kontaktaufnahme</h4>
+                                    <p>Einer unserer Finanzexperten wird sich telefonisch bei Ihnen melden.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">3</div>
+                                <div class="timeline-content">
+                                    <h4>Kostenloses Erstgespräch</h4>
+                                    <p>In einem unverbindlichen Gespräch besprechen wir Ihre Finanzierungsmöglichkeiten.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Sie haben noch Fragen?</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <strong>Telefon:</strong> <a href="tel:+436645247909">+43 664 / 5247909</a>
+                            </div>
+                            <div class="contact-item">
+                                <strong>E-Mail:</strong> <a href="mailto:nico@nadolph.at">nico@nadolph.at</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="landing.html" class="btn-primary">Zurück zur Startseite</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Nico Nadolph. Alle Rechte vorbehalten.</p>
+            <div class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+                <a href="cookie-richtlinie.html">Cookie-Richtlinie</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
