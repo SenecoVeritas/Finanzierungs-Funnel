@@ -731,24 +731,49 @@ body {
    ========================================== */
 
 @media (max-width: 768px) {
-    .main-heading {
-        font-size: 32px;
+    /* Container & Spacing */
+    .container {
+        padding: 0 var(--spacing-md);
+        max-width: 100%;
     }
 
-    .subtitle {
-        font-size: 18px;
+    /* Header - Mobile */
+    .header {
+        padding: var(--spacing-md) 0;
     }
 
-    .section-heading {
-        font-size: 26px;
+    .logo {
+        gap: 10px;
+    }
+
+    .logo svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-text {
+        font-size: 16px;
+    }
+
+    /* Progress Bar - Mobile Optimized */
+    .progress-container {
+        padding: var(--spacing-md) var(--spacing-sm);
     }
 
     .progress-steps {
-        flex-wrap: wrap;
+        gap: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+    }
+
+    .progress-step {
+        flex-shrink: 0;
     }
 
     .step-label {
         font-size: 10px;
+        white-space: nowrap;
     }
 
     .step-circle {
@@ -757,47 +782,389 @@ body {
         font-size: 14px;
     }
 
-    .options-grid {
-        grid-template-columns: 1fr;
+    /* Headings - Mobile */
+    .main-heading {
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .subtitle {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .section-heading {
+        font-size: 24px;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .section-subtitle {
+        font-size: 15px;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Hero Section - Mobile */
+    .hero-section {
+        padding: var(--spacing-xl) var(--spacing-md);
     }
 
     .benefits-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
     }
 
-    .form-row {
+    .benefit-item {
+        padding: var(--spacing-sm);
+    }
+
+    .benefit-icon {
+        font-size: 18px;
+    }
+
+    .benefit-text {
+        font-size: 14px;
+    }
+
+    /* Options Grid - Mobile */
+    .options-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 
+    .option-card {
+        padding: var(--spacing-lg);
+    }
+
+    .option-title {
+        font-size: 20px;
+    }
+
+    .option-description {
+        font-size: 14px;
+    }
+
+    /* Form - Mobile Optimized */
     .form-container {
         padding: var(--spacing-md);
     }
 
-    .hero-section {
-        padding: var(--spacing-lg) var(--spacing-md);
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 
+    .form-label {
+        font-size: 15px;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 14px 16px;
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 48px; /* Touch target */
+    }
+
+    .range-slider {
+        height: 12px;
+    }
+
+    .range-values {
+        font-size: 13px;
+    }
+
+    .range-current {
+        font-size: 18px;
+    }
+
+    /* Calculation Result - Mobile */
+    .calculation-result {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-lg) 0;
+    }
+
+    .result-value {
+        font-size: 32px;
+    }
+
+    .result-hint {
+        font-size: 13px;
+    }
+
+    /* Buttons - Mobile */
     .button-group {
         flex-direction: column;
         width: 100%;
+        gap: var(--spacing-sm);
     }
 
     .btn-primary,
     .btn-secondary {
         width: 100%;
+        min-height: 48px; /* Touch target */
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+
+    /* Timeline - Mobile */
+    .timeline {
+        gap: var(--spacing-md);
+    }
+
+    .timeline-item {
+        padding: var(--spacing-md);
+    }
+
+    .timeline-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+
+    .timeline-content h4 {
+        font-size: 18px;
+    }
+
+    .timeline-content p {
+        font-size: 14px;
+    }
+
+    /* Success Container - Mobile */
+    .success-container {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    /* Contact Details - Mobile */
+    .contact-details {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .contact-item {
+        font-size: 15px;
+    }
+
+    /* Footer - Mobile */
+    .footer {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center;
     }
 }
 
 @media (max-width: 480px) {
+    /* Extra Small Devices */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .logo svg {
+        width: 36px;
+        height: 36px;
+    }
+
     .logo-text {
+        font-size: 14px;
+    }
+
+    /* Typography - Very Small Screens */
+    .main-heading {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+    .section-heading {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    /* Progress Steps - Compact */
+    .step-label {
+        font-size: 9px;
+    }
+
+    .step-circle {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    /* Options - Compact */
+    .option-card {
+        padding: var(--spacing-md);
+    }
+
+    .option-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    .option-title {
         font-size: 18px;
     }
 
-    .main-heading {
-        font-size: 26px;
+    .option-description {
+        font-size: 13px;
+    }
+
+    /* Forms - Very Small Screens */
+    .form-container {
+        padding: var(--spacing-sm);
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 16px; /* Keep 16px to prevent zoom */
+        padding: 12px 14px;
+    }
+
+    /* Result Display */
+    .calculation-result {
+        padding: var(--spacing-md);
     }
 
     .result-value {
         font-size: 28px;
+    }
+
+    .result-label {
+        font-size: 14px;
+    }
+
+    /* Buttons - Extra Padding for Touch */
+    .btn-primary,
+    .btn-secondary {
+        padding: 16px 24px;
+        font-size: 15px;
+    }
+
+    /* Timeline - Compact */
+    .timeline-item {
+        padding: var(--spacing-sm);
+    }
+
+    .timeline-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Success Screen */
+    .success-icon svg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .next-steps h3 {
+        font-size: 18px;
+    }
+
+    .contact-info h3 {
+        font-size: 18px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* All interactive elements minimum touch target */
+    button,
+    a,
+    input[type="radio"],
+    input[type="checkbox"],
+    .option-card,
+    .progress-step {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Larger touch targets for primary actions */
+    .btn-primary,
+    .btn-secondary {
+        min-height: 48px;
+        padding: 14px 28px;
+    }
+
+    /* Form inputs optimized for touch */
+    .form-input,
+    .form-textarea,
+    select {
+        min-height: 48px;
+        font-size: 16px; /* Prevents iOS zoom */
+    }
+
+    /* Range slider - larger thumb for touch */
+    .range-slider {
+        height: 14px;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+        width: 28px;
+        height: 28px;
+    }
+
+    .range-slider::-moz-range-thumb {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Radio buttons and checkboxes - larger */
+    input[type="radio"],
+    input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Option cards - better spacing */
+    .option-card {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Remove hover effects on touch */
+    .option-card:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none;
+    }
+
+    /* Active feedback for touch */
+    .btn-primary:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+
+    .option-card:active {
+        transform: scale(0.99);
+        opacity: 0.95;
+    }
+
+    /* Prevent text selection on buttons */
+    button,
+    .btn-primary,
+    .btn-secondary {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Landscape mode on mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+    .hero-section {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .progress-container {
+        padding: var(--spacing-sm);
+    }
+
+    .main-heading {
+        font-size: 24px;
     }
 }
