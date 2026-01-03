@@ -86,7 +86,16 @@
                     <div class="type-icon">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
                             <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
-                            <path d="M25 20L35 30L25 40M35 20V40" stroke="#587592" stroke-width="3"/>
+                            <!-- Kreislauf-Pfeile für Umschuldung -->
+                            <path d="M40 24C40 19 36 15 30 15C24 15 20 19 20 24" stroke="#587592" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M20 36C20 41 24 45 30 45C36 45 40 41 40 36" stroke="#587592" stroke-width="3" stroke-linecap="round"/>
+                            <!-- Pfeilspitzen -->
+                            <path d="M17 24L20 21L23 24" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M43 36L40 39L37 36" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Euro Symbol in der Mitte -->
+                            <circle cx="30" cy="30" r="6" fill="#587592"/>
+                            <path d="M31 27H28M31 30H28M31 33H28" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M32 28C32 27 31.5 26 30 26C28.5 26 28 27 28 28C28 29 28 30 28 30C28 30 28 31 28 32C28 33 28.5 34 30 34C31.5 34 32 33 32 32" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
                         </svg>
                     </div>
                     <h3 class="type-title">Umschuldung</h3>
@@ -97,7 +106,18 @@
                     <div class="type-icon">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
                             <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
-                            <path d="M25 35L30 40L40 25M20 20H40V40H20V20Z" stroke="#587592" stroke-width="2.5"/>
+                            <!-- Haus-Silhouette im Hintergrund -->
+                            <path d="M20 32L30 22L40 32V42H20V32Z" stroke="#587592" stroke-width="2" fill="none" opacity="0.3"/>
+                            <!-- Hammer -->
+                            <rect x="22" y="33" width="3" height="12" fill="#587592" rx="1"/>
+                            <path d="M20 32L26 32L26 29L24 27L22 29L22 32L20 32Z" fill="#587592"/>
+                            <!-- Pinsel/Farbroller -->
+                            <rect x="34" y="26" width="3" height="14" fill="#587592" rx="1"/>
+                            <rect x="32" y="24" width="7" height="4" fill="#587592" rx="1"/>
+                            <!-- Renovierungs-Funken/Sterne -->
+                            <circle cx="28" cy="24" r="1.5" fill="#587592"/>
+                            <circle cx="38" cy="38" r="1.5" fill="#587592"/>
+                            <path d="M32 20L32.5 21.5L34 22L32.5 22.5L32 24L31.5 22.5L30 22L31.5 21.5L32 20Z" fill="#587592"/>
                         </svg>
                     </div>
                     <h3 class="type-title">Sanierung</h3>
