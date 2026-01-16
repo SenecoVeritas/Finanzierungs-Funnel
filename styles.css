@@ -72,12 +72,20 @@ body {
     background-color: var(--white);
     margin-bottom: var(--spacing-lg);
     box-shadow: var(--shadow-sm);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+}
+
+.logo svg {
+    width: 127px;
+    height: 127px;
 }
 
 .logo-text {
