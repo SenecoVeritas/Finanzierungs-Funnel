@@ -64,6 +64,25 @@ body {
 }
 
 /* ==========================================
+   Floating Logo
+   ========================================== */
+
+.floating-logo {
+    position: fixed;
+    top: 0;
+    left: 24px;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+.floating-logo img {
+    width: 127px;
+    height: 127px;
+    object-fit: contain;
+    display: block;
+}
+
+/* ==========================================
    Header
    ========================================== */
 
@@ -75,20 +94,7 @@ body {
     min-height: 80px;
     display: flex;
     align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-}
-
-.logo img {
-    width: 127px;
-    height: 127px;
-    max-width: 127px;
-    max-height: 127px;
-    object-fit: contain;
+    margin-top: 47px;
 }
 
 .logo-text {
