@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- RS Finance Icon System -->
+  <!-- Consistent 2px stroke, round caps, brand colors: #587592 (primary), #414a5a (dark) -->
+
+  <!-- FINANZIERUNGSTYPEN (60x60) -->
+
+  <!-- Kauf Icon: Home with key -->
+  <symbol id="icon-kauf" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+    <path d="M20 28L30 18L40 28V42C40 42.5523 39.5523 43 39 43H21C20.4477 43 20 42.5523 20 42V28Z" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M26 43V33C26 32.4477 26.4477 32 27 32H33C33.5523 32 34 32.4477 34 33V43" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="37" cy="25" r="6" fill="#587592"/>
+    <path d="M37 22V25M37 25H40M37 25V28" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Bau Icon: Blueprint with hammer -->
+  <symbol id="icon-bau" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+    <rect x="19" y="21" width="22" height="18" rx="1.5" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M24 26H31M24 30H31M24 34H28" stroke="#587592" stroke-width="2" stroke-linecap="round"/>
+    <path d="M36 33L38 35L42 31" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Umschuldung Icon: Circular arrows with percentage -->
+  <symbol id="icon-umschuldung" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+    <path d="M40 24C40 19 36 15 30 15C24 15 20 19 20 24" stroke="#587592" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M20 36C20 41 24 45 30 45C36 45 40 41 40 36" stroke="#587592" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M17 24L20 21L23 24" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M43 36L40 39L37 36" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="30" cy="30" r="7" fill="#587592"/>
+    <text x="30" y="34" font-size="10" font-weight="600" fill="white" text-anchor="middle">%</text>
+  </symbol>
+
+  <!-- Sanierung Icon: Home with tools -->
+  <symbol id="icon-sanierung" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
+    <path d="M20 30L30 20L40 30V42C40 42.5523 39.5523 43 39 43H21C20.4477 43 20 42.5523 20 42V30Z" stroke="#587592" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4"/>
+    <path d="M23 35L26 32L29 35L26 38L23 35Z" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M32 27L35 24L38 27L35 30L32 27Z" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="30" cy="30" r="1.5" fill="#587592"/>
+    <circle cx="36" cy="36" r="1.5" fill="#587592"/>
+  </symbol>
+
+  <!-- VORTEILE (50x50) -->
+
+  <!-- Unabhängiger Vergleich: Chart bars -->
+  <symbol id="icon-vergleich" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="23" fill="#F0F4F8"/>
+    <path d="M16 30V20M25 30V15M34 30V22" stroke="#587592" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="25" cy="13" r="2" fill="#587592"/>
+  </symbol>
+
+  <!-- Zeitersparnis: Clock with forward arrow -->
+  <symbol id="icon-zeit" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="23" fill="#F0F4F8"/>
+    <circle cx="25" cy="25" r="10" stroke="#587592" stroke-width="2.5" fill="none"/>
+    <path d="M25 20V25L28 28" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35 20L38 20L38 17" stroke="#587592" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Beste Konditionen: Trending down graph -->
+  <symbol id="icon-konditionen" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="23" fill="#F0F4F8"/>
+    <path d="M16 20L22 26L28 22L34 28" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M29 28H34V23" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Kostenloser Service: Checkmark shield -->
+  <symbol id="icon-service" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="23" fill="#F0F4F8"/>
+    <path d="M25 15L32 18V24C32 28 28.5 31 25 33C21.5 31 18 28 18 24V18L25 15Z" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M21 24L23.5 26.5L29 21" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Individuelle Lösungen: Puzzle piece -->
+  <symbol id="icon-loesungen" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="23" fill="#F0F4F8"/>
+    <path d="M18 25H22C22 22.5 23.5 21 25 21C26.5 21 28 22.5 28 25H32V29C34.5 29 36 30.5 36 32C36 33.5 34.5 35 32 35V32H28V28H22V32H18V25Z" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+
+  <!-- Langfristige Betreuung: Handshake -->
+  <symbol id="icon-betreuung" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="23" fill="#F0F4F8"/>
+    <path d="M20 26L17 23L20 20M30 26L33 23L30 20" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 23H30" stroke="#587592" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="20" cy="23" r="2.5" fill="#587592"/>
+    <circle cx="30" cy="23" r="2.5" fill="#587592"/>
+  </symbol>
+
+  <!-- CTA TRUST BADGES (24x24) -->
+
+  <!-- Checkmark circle -->
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" stroke="#587592" stroke-width="2" fill="none"/>
+    <path d="M8 12L10.5 14.5L16 9" stroke="#587592" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Lock secure -->
+  <symbol id="icon-secure" viewBox="0 0 24 24">
+    <rect x="6" y="11" width="12" height="9" rx="1.5" stroke="#587592" stroke-width="2" fill="none"/>
+    <path d="M9 11V8C9 6.34315 10.3431 5 12 5C13.6569 5 15 6.34315 15 8V11" stroke="#587592" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="12" cy="15" r="1.5" fill="#587592"/>
+  </symbol>
+
+  <!-- Clock fast -->
+  <symbol id="icon-fast" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9" stroke="#587592" stroke-width="2" fill="none"/>
+    <path d="M12 7V12L15 15" stroke="#587592" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- FOOTER/CONTACT (20x20) -->
+
+  <!-- Phone -->
+  <symbol id="icon-phone" viewBox="0 0 20 20">
+    <path d="M6 3C5.44772 3 5 3.44772 5 4V16C5 16.5523 5.44772 17 6 17H14C14.5523 17 15 16.5523 15 16V4C15 3.44772 14.5523 3 14 3H6Z" stroke="#587592" stroke-width="1.8" fill="none"/>
+    <path d="M8.5 14H11.5" stroke="#587592" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Email -->
+  <symbol id="icon-email" viewBox="0 0 20 20">
+    <rect x="3" y="5" width="14" height="10" rx="1.5" stroke="#587592" stroke-width="1.8" fill="none"/>
+    <path d="M3 7L10 11L17 7" stroke="#587592" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Location -->
+  <symbol id="icon-location" viewBox="0 0 20 20">
+    <path d="M10 3C7.23858 3 5 5.23858 5 8C5 11.5 10 17 10 17C10 17 15 11.5 15 8C15 5.23858 12.7614 3 10 3Z" stroke="#587592" stroke-width="1.8" fill="none"/>
+    <circle cx="10" cy="8" r="2" fill="#587592"/>
+  </symbol>
+
+  <!-- Website -->
+  <symbol id="icon-website" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="7" stroke="#587592" stroke-width="1.8" fill="none"/>
+    <path d="M3 10H17M10 3C10 3 12 5.5 12 10C12 14.5 10 17 10 17M10 3C10 3 8 5.5 8 10C8 14.5 10 17 10 17" stroke="#587592" stroke-width="1.8"/>
+  </symbol>
+
+  <!-- FAQ Chevron -->
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24">
+    <path d="M6 9L12 15L18 9" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+</svg>
