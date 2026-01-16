@@ -453,47 +453,55 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-grid">
-                <!-- Left: Logo & Badge -->
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <img src="logo-white.svg" alt="RS Finance">
-                    </div>
-                    <div class="footer-badge">
-                        <img src="guetesiegel.webp" alt="Staatlich geprüfte gewerbliche Vermögensberatung">
-                    </div>
-                </div>
+            <!-- Column 1: Logo -->
+            <div class="footer-logo-column">
+                <img src="logo-white.svg" alt="RS Finance" class="footer-logo-img">
+            </div>
 
-                <!-- Center: Contact Info -->
-                <div class="footer-contact">
-                    <h3 class="footer-heading">Kontaktieren Sie uns:</h3>
-                    <address class="footer-address">
-                        <div class="contact-row">
+            <!-- Column 2: Seal/Badge -->
+            <div class="footer-seal-column">
+                <img src="guetesiegel.webp" alt="Staatlich geprüfte gewerbliche Vermögensberatung" class="footer-seal-img">
+            </div>
+
+            <!-- Column 3: Contact Info -->
+            <div class="footer-contact-column">
+                <h3 class="footer-contact-heading">Kontaktieren Sie uns:</h3>
+                <ul class="footer-contact-list">
+                    <li class="footer-contact-item">
+                        <a href="tel:+436646392996" class="footer-contact-link">
                             <svg width="20" height="20"><use href="#icon-phone"/></svg>
-                            <a href="tel:+436646392996">+43 664 / 6392996</a>
-                        </div>
-                        <div class="contact-row">
+                            <span>+43 664 / 6392996</span>
+                        </a>
+                    </li>
+                    <li class="footer-contact-item">
+                        <a href="mailto:office@rs-finance.at" class="footer-contact-link">
                             <svg width="20" height="20"><use href="#icon-email"/></svg>
-                            <a href="mailto:office@rs-finance.at">office@rs-finance.at</a>
-                        </div>
-                        <div class="contact-row">
+                            <span>office@rs-finance.at</span>
+                        </a>
+                    </li>
+                    <li class="footer-contact-item">
+                        <div class="footer-contact-link">
                             <svg width="20" height="20"><use href="#icon-location"/></svg>
                             <span>Alpen-Adria-Platz 1, Eingang D<br>9020 Klagenfurt am Wörthersee</span>
                         </div>
-                    </address>
-                </div>
+                    </li>
+                </ul>
+            </div>
 
-                <!-- Right: Legal Links -->
-                <nav class="footer-legal">
-                    <a href="datenschutz.html">Datenschutz</a>
-                    <a href="impressum.html">Impressum</a>
-                    <a href="cookie-richtlinie.html">Cookie-Richtlinie (EU)</a>
+            <!-- Column 4: Legal Links -->
+            <div class="footer-legal-column">
+                <nav class="footer-nav-menu">
+                    <ul class="footer-nav-list">
+                        <li class="footer-nav-item"><a href="datenschutz.html" class="footer-nav-link">Datenschutz</a></li>
+                        <li class="footer-nav-item"><a href="impressum.html" class="footer-nav-link">Impressum</a></li>
+                        <li class="footer-nav-item"><a href="cookie-richtlinie.html" class="footer-nav-link">Cookie-Richtlinie (EU)</a></li>
+                    </ul>
                 </nav>
             </div>
 
-            <!-- Copyright -->
+            <!-- Copyright Row (Full Width) -->
             <div class="footer-copyright">
-                <p>© 2026 RS Finance. All rights reserved.</p>
+                <p class="footer-copyright-text">© 2026 RS Finance. All rights reserved.</p>
             </div>
         </div>
     </footer>
