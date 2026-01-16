@@ -74,13 +74,16 @@ body {
     left: 24px;
     z-index: 2000;
     pointer-events: none;
+    width: 127px;
+    height: 127px;
+    overflow: hidden;
 }
 
 .floating-logo img {
     width: 127px;
-    height: 127px;
-    object-fit: contain;
+    height: auto;
     display: block;
+    transform: translateY(-2px);
 }
 
 /* ==========================================
