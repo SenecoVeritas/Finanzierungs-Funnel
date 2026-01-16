@@ -69,20 +69,16 @@ body {
 
 .floating-logo {
     position: fixed;
-    top: 0;
-    left: 24px;
+    top: -84px;
+    left: 64px;
     z-index: 2000;
     pointer-events: none;
-    width: 127px;
-    height: 127px;
-    overflow: hidden;
 }
 
 .floating-logo img {
-    width: 127px;
+    width: 92.95px;
     height: auto;
     display: block;
-    transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -90,14 +86,13 @@ body {
    ========================================== */
 
 .header {
-    padding: var(--spacing-md) 0;
+    padding: 0 64px;
     background-color: var(--white);
     margin-bottom: var(--spacing-lg);
     box-shadow: var(--shadow-sm);
-    min-height: 80px;
+    height: 73px;
     display: flex;
     align-items: center;
-    margin-top: 47px;
 }
 
 .logo-text {
