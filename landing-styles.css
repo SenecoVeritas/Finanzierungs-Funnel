@@ -92,9 +92,9 @@ body {
     text-decoration: none;
 }
 
-.logo svg {
+.logo img {
     width: 127px;
-    height: 127px;
+    height: auto;
 }
 
 .logo-text {
