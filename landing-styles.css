@@ -626,7 +626,9 @@ section {
 .footer {
     background-color: rgb(48, 48, 48);
     width: 100%;
-    padding: 48px 0 16px;
+    padding: 0 0 16px;
+    position: relative;
+    margin-top: 125px;
 }
 
 .footer-container {
@@ -640,21 +642,26 @@ section {
     column-gap: 40px;
     row-gap: 32px;
     align-items: flex-start;
+    position: relative;
 }
 
-/* Column 1: Logo */
+/* Column 1: Logo - Overlapping Footer */
 .footer-logo-column {
     display: flex;
     flex-direction: row;
     flex: 0 0 auto;
     align-items: flex-start;
     justify-content: flex-start;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-logo-img {
-    width: 66px;
+    width: 145px;
     height: auto;
     display: block;
+    position: relative;
+    transform: translateY(-125px);
 }
 
 /* Column 2: Seal/Badge */
