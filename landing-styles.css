@@ -648,16 +648,24 @@ section {
     align-items: flex-start;
 }
 
-.footer-logo svg {
-    filter: brightness(1.2);
+.footer-logo {
+    width: 150px;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .footer-badge {
-    opacity: 0.7;
+    width: 100px;
 }
 
-.footer-badge svg text {
-    font-family: 'Roboto', sans-serif;
+.footer-badge img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Center Column: Contact */
