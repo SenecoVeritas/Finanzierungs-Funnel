@@ -85,7 +85,10 @@ body {
 
 .logo img {
     width: 127px;
-    height: auto;
+    height: 127px;
+    max-width: 127px;
+    max-height: 127px;
+    object-fit: contain;
 }
 
 .logo-text {
