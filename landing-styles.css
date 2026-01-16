@@ -647,12 +647,12 @@ section {
     display: flex;
     flex-direction: row;
     flex: 0 0 auto;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
 }
 
 .footer-logo-img {
-    width: 145px;
+    width: 66px;
     height: auto;
     display: block;
 }
@@ -662,8 +662,9 @@ section {
     display: flex;
     flex-direction: row;
     flex: 0 0 auto;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
+    padding-top: 43px;
 }
 
 .footer-seal-img {
