@@ -851,6 +851,7 @@ section {
 
     .header-content {
         padding: 0 var(--spacing-md);
+        justify-content: flex-end;
     }
 
     .main-nav {
