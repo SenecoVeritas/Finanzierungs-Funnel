@@ -64,29 +64,15 @@ body {
 }
 
 /* ==========================================
-   Footer Partner Section - ONLY for /rechner page
+   Header & Logo Cleanup - ONLY for /rechner page
    ========================================== */
 
-body.rechner-page .footer-partner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 1px solid var(--border-color);
-}
-
-body.rechner-page .footer-logo {
-    width: 50px;
-    height: auto;
-}
-
-body.rechner-page .footer-partner-text {
-    margin: 0;
-    font-size: 14px;
-    color: var(--text-medium);
-    font-weight: 500;
+/* Hide ALL logo variants in header/overlay */
+body.rechner-page .header-logo,
+body.rechner-page .funnel-logo,
+body.rechner-page .logo-overlay,
+body.rechner-page #rechner-brand-overlay {
+    display: none !important;
 }
 
 /* Hide any header on rechner page */
@@ -95,6 +81,32 @@ body.rechner-page .header {
     height: 0;
     margin: 0;
     padding: 0;
+}
+
+/* ==========================================
+   Footer Partner Section - ONLY for /rechner page
+   ========================================== */
+
+body.rechner-page .footer-partner {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.rechner-page .footer-partner-text {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+body.rechner-page .footer-rs-logo {
+    max-width: 120px;
+    width: 100%;
+    height: auto;
+    margin: 12px auto 0;
+    display: block;
 }
 
 /* ==========================================
@@ -763,12 +775,16 @@ body.rechner-page .header {
 
 @media (max-width: 768px) {
     /* Footer Partner - Mobile (rechner page only) */
-    body.rechner-page .footer-logo {
-        width: 40px;
+    body.rechner-page .footer-rs-logo {
+        max-width: 90px;
     }
 
     body.rechner-page .footer-partner-text {
         font-size: 13px;
+    }
+
+    body.rechner-page .footer-partner {
+        padding: var(--spacing-md) 0;
     }
 
     /* Container & Spacing */
