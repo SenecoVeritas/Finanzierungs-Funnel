@@ -64,26 +64,29 @@ body {
 }
 
 /* ==========================================
-   Brand Overlay - ONLY for /rechner page
+   Footer Partner Section - ONLY for /rechner page
    ========================================== */
 
-body.rechner-page {
-    padding-top: 140px;
+body.rechner-page .footer-partner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
 }
 
-body.rechner-page #rechner-brand-overlay {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10000;
-    pointer-events: none;
-}
-
-body.rechner-page #rechner-brand-overlay img {
-    width: 70px;
+body.rechner-page .footer-logo {
+    width: 50px;
     height: auto;
-    display: block;
+}
+
+body.rechner-page .footer-partner-text {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-medium);
+    font-weight: 500;
 }
 
 /* Hide any header on rechner page */
@@ -759,13 +762,13 @@ body.rechner-page .header {
    ========================================== */
 
 @media (max-width: 768px) {
-    /* Brand Overlay - Mobile (rechner page only) */
-    body.rechner-page #rechner-brand-overlay img {
-        width: 55px;
+    /* Footer Partner - Mobile (rechner page only) */
+    body.rechner-page .footer-logo {
+        width: 40px;
     }
 
-    body.rechner-page {
-        padding-top: 110px;
+    body.rechner-page .footer-partner-text {
+        font-size: 13px;
     }
 
     /* Container & Spacing */
