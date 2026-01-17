@@ -88,24 +88,28 @@ body.rechner-page .header {
    ========================================== */
 
 body.rechner-page .footer-partner {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-md);
     border-bottom: 1px solid var(--border-color);
 }
 
 body.rechner-page .footer-partner-text {
-    margin: 0 0 12px 0;
     font-size: 14px;
-    color: var(--text-medium);
-    font-weight: 500;
+    color: #666;
+    white-space: nowrap;
+    margin: 0;
 }
 
 body.rechner-page .footer-rs-logo {
-    max-width: 120px;
-    width: 100%;
+    max-width: 110px;
     height: auto;
-    margin: 12px auto 0;
     display: block;
 }
 
@@ -775,16 +779,19 @@ body.rechner-page .footer-rs-logo {
 
 @media (max-width: 768px) {
     /* Footer Partner - Mobile (rechner page only) */
+    body.rechner-page .footer-partner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 16px;
+    }
+
     body.rechner-page .footer-rs-logo {
         max-width: 90px;
     }
 
     body.rechner-page .footer-partner-text {
         font-size: 13px;
-    }
-
-    body.rechner-page .footer-partner {
-        padding: var(--spacing-md) 0;
     }
 
     /* Container & Spacing */
