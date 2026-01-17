@@ -768,7 +768,7 @@ body.rechner-page .footer-rs-logo {
 @media (max-width: 768px) {
     /* Footer Partner - Mobile (rechner page only) */
     body.rechner-page .footer-rs-logo {
-        max-width: 90px;
+        max-width: 60px;
     }
 
     /* Container & Spacing */
