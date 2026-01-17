@@ -72,8 +72,8 @@ body {
     top: 16px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    max-width: 35vw;
+    width: 80px;
+    max-width: 25vw;
     z-index: 1000;
     pointer-events: none;
 }
@@ -86,7 +86,7 @@ body {
 
 /* Funnel Wrapper - Prevents Content Overlap */
 .funnel-wrapper {
-    padding-top: 120px;
+    padding-top: 90px;
 }
 
 /* ==========================================
@@ -756,13 +756,13 @@ body {
 @media (max-width: 768px) {
     /* Funnel Logo - Mobile */
     .funnel-logo {
-        width: 90px;
+        width: 70px;
         top: 12px;
     }
 
     /* Funnel Wrapper - Mobile */
     .funnel-wrapper {
-        padding-top: 100px;
+        padding-top: 80px;
     }
 
     /* Container & Spacing */
