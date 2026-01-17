@@ -2,49 +2,6 @@
 // RS Finance - Landing Page Script
 // ==========================================
 
-// Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileNav = document.querySelector('.mobile-nav');
-    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-    // Open mobile menu
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileMenuToggle.classList.add('active');
-        mobileNav.classList.add('active');
-        mobileNavOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-    });
-
-    // Close mobile menu function
-    const closeMobileMenu = () => {
-        mobileMenuToggle.classList.remove('active');
-        mobileNav.classList.remove('active');
-        mobileNavOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    };
-
-    // Close via close button
-    mobileNavClose.addEventListener('click', closeMobileMenu);
-
-    // Close via overlay click
-    mobileNavOverlay.addEventListener('click', closeMobileMenu);
-
-    // Close when clicking navigation links
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-            closeMobileMenu();
-        }
-    });
-});
-
 // FAQ Toggle Functionality
 function toggleFaq(element) {
     const faqItem = element.parentElement;
