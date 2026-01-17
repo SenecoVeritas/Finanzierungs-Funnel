@@ -81,7 +81,7 @@ body.rechner-page #rechner-brand-overlay {
 }
 
 body.rechner-page #rechner-brand-overlay img {
-    width: 110px;
+    width: 70px;
     height: auto;
     display: block;
 }
@@ -761,7 +761,7 @@ body.rechner-page .header {
 @media (max-width: 768px) {
     /* Brand Overlay - Mobile (rechner page only) */
     body.rechner-page #rechner-brand-overlay img {
-        width: 80px;
+        width: 55px;
     }
 
     body.rechner-page {
