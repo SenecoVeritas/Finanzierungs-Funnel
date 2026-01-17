@@ -64,19 +64,21 @@ body {
 }
 
 /* ==========================================
-   Floating Logo
+   Floating Logo - Funnel Header
    ========================================== */
 
 .floating-logo {
     position: fixed;
-    top: -84px;
-    left: 64px;
-    z-index: 2000;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
     pointer-events: none;
 }
 
 .floating-logo img {
-    width: 92.95px;
+    width: 140px;
+    max-width: 40vw;
     height: auto;
     display: block;
 }
@@ -746,6 +748,15 @@ body {
    ========================================== */
 
 @media (max-width: 768px) {
+    /* Floating Logo - Mobile */
+    .floating-logo {
+        top: 16px;
+    }
+
+    .floating-logo img {
+        width: 100px;
+    }
+
     /* Container & Spacing */
     .container {
         padding: 0 var(--spacing-md);
