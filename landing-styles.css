@@ -1010,19 +1010,55 @@ section {
 }
 
 @media (max-width: 480px) {
-    /* Extra Small Devices - Optimized */
+    /* Extra Small Devices - Premium Mobile Optimization */
+
+    /* Header - Reduce Crowding */
+    .floating-logo {
+        top: -70px; /* Smaller overlap on mobile */
+        left: 40px;
+    }
+
+    .floating-logo img {
+        width: 75px; /* Reduced from 92.95px */
+        height: auto;
+    }
+
+    .header {
+        height: 60px; /* Slightly smaller */
+    }
+
+    .header-content {
+        padding: 0 20px 0 40px;
+    }
+
+    .btn-header {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    /* Hero - More Breathing Room */
     .hero {
-        min-height: 450px;
-        padding: var(--spacing-xl) 0;
+        min-height: auto; /* Remove fixed height for natural flow */
+        padding: var(--spacing-lg) 0 var(--spacing-xl) 0; /* Reduced top/bottom */
+    }
+
+    .hero-badge {
+        font-size: 10px;
+        padding: 6px 14px;
+        margin-bottom: var(--spacing-md); /* More space after badge */
     }
 
     .hero-title {
-        font-size: 26px;
-        line-height: 1.3;
+        font-size: 28px; /* Slightly larger than 26px for premium feel */
+        line-height: 1.4; /* Increased from 1.3 for lighter feel */
+        margin-bottom: var(--spacing-lg); /* More space after headline */
+        letter-spacing: -0.02em; /* Tighter tracking for premium look */
     }
 
     .hero-subtitle {
         font-size: 15px;
+        line-height: 1.6; /* Increased for readability */
+        margin-bottom: var(--spacing-xl); /* More space before CTA */
     }
 
     .btn-large {
