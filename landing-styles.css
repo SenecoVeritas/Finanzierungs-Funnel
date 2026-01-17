@@ -1024,7 +1024,7 @@ section {
     /* Header - Reduce Crowding */
     .floating-logo {
         top: -70px; /* Smaller overlap on mobile */
-        left: 40px;
+        left: 20px; /* Moved left from 40px */
     }
 
     .floating-logo img {
@@ -1037,7 +1037,7 @@ section {
     }
 
     .header-content {
-        padding: 0 20px 0 40px;
+        padding: 0 20px 0 20px; /* Equal padding left/right */
     }
 
     .btn-header {
@@ -1045,10 +1045,14 @@ section {
         font-size: 13px;
     }
 
-    /* Hero - More Breathing Room */
+    /* Hero - More Breathing Room & Better CTA Contrast */
     .hero {
         min-height: auto; /* Remove fixed height for natural flow */
-        padding: var(--spacing-lg) 0 var(--spacing-xl) 0; /* Reduced top/bottom */
+        padding: var(--spacing-lg) 0 var(--spacing-xxl) 0; /* More bottom padding */
+    }
+
+    .hero-background::before {
+        opacity: 0.15; /* Reduced from 0.3 for better contrast */
     }
 
     .hero-badge {
@@ -1068,6 +1072,15 @@ section {
         font-size: 15px;
         line-height: 1.6; /* Increased for readability */
         margin-bottom: var(--spacing-xl); /* More space before CTA */
+    }
+
+    .hero-cta {
+        padding: 0 var(--spacing-md); /* Horizontal padding for better alignment */
+        gap: var(--spacing-md); /* More space between buttons */
+    }
+
+    .hero-cta .btn-large {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Better depth */
     }
 
     .btn-large {
