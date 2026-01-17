@@ -64,23 +64,29 @@ body {
 }
 
 /* ==========================================
-   Floating Logo - Funnel Header
+   Funnel Logo - Fixed & Centered (No Overlap)
    ========================================== */
 
-.floating-logo {
+.funnel-logo {
     position: fixed;
-    top: 20px;
+    top: 16px;
     left: 50%;
     transform: translateX(-50%);
+    width: 120px;
+    max-width: 35vw;
     z-index: 1000;
     pointer-events: none;
 }
 
-.floating-logo img {
-    width: 140px;
-    max-width: 40vw;
+.funnel-logo img {
+    width: 100%;
     height: auto;
     display: block;
+}
+
+/* Funnel Wrapper - Prevents Content Overlap */
+.funnel-wrapper {
+    padding-top: 120px;
 }
 
 /* ==========================================
@@ -748,13 +754,15 @@ body {
    ========================================== */
 
 @media (max-width: 768px) {
-    /* Floating Logo - Mobile */
-    .floating-logo {
-        top: 16px;
+    /* Funnel Logo - Mobile */
+    .funnel-logo {
+        width: 90px;
+        top: 12px;
     }
 
-    .floating-logo img {
-        width: 100px;
+    /* Funnel Wrapper - Mobile */
+    .funnel-wrapper {
+        padding-top: 100px;
     }
 
     /* Container & Spacing */
