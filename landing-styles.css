@@ -93,7 +93,9 @@ body {
     top: 0;
     z-index: 1000;
     padding: 0;
-    height: 73px;
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
 
 .header-content {
@@ -101,7 +103,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     gap: var(--spacing-lg);
-    height: 100%;
+    width: 100%;
     padding: 0 32px 0 64px;
 }
 
@@ -843,7 +845,12 @@ section {
 @media (max-width: 768px) {
     /* Header - Mobile Optimized */
     .header {
-        padding: var(--spacing-sm) 0;
+        height: 70px;
+        padding: 0;
+    }
+
+    .header-content {
+        padding: 0 var(--spacing-md);
     }
 
     .main-nav {
@@ -1033,11 +1040,12 @@ section {
     }
 
     .header {
-        height: 60px; /* Slightly smaller */
+        height: 64px;
+        padding: 0;
     }
 
     .header-content {
-        padding: 0 20px 0 20px; /* Equal padding left/right */
+        padding: 0 var(--spacing-md);
     }
 
     .btn-header {
