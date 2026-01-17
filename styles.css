@@ -68,14 +68,15 @@ body {
    ========================================== */
 
 .funnel-logo {
-    position: fixed;
-    top: 16px;
+    position: fixed !important;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
     max-width: 25vw;
-    z-index: 1000;
+    z-index: 9999;
     pointer-events: none;
+    will-change: transform;
 }
 
 .funnel-logo img {
@@ -86,7 +87,7 @@ body {
 
 /* Funnel Wrapper - Prevents Content Overlap */
 .funnel-wrapper {
-    padding-top: 90px;
+    padding-top: 80px;
 }
 
 /* ==========================================
@@ -757,12 +758,12 @@ body {
     /* Funnel Logo - Mobile */
     .funnel-logo {
         width: 70px;
-        top: 12px;
+        top: 8px;
     }
 
     /* Funnel Wrapper - Mobile */
     .funnel-wrapper {
-        padding-top: 80px;
+        padding-top: 75px;
     }
 
     /* Container & Spacing */
