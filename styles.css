@@ -65,29 +65,42 @@ body {
 
 /* ==========================================
    Funnel Logo - Fixed & Centered (No Overlap)
+   ONLY for /rechner page
    ========================================== */
 
-.funnel-logo {
-    position: fixed !important;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    max-width: 25vw;
-    z-index: 9999;
-    pointer-events: none;
-    will-change: transform;
+body.rechner-page {
+    margin: 0;
+    padding: 0;
 }
 
-.funnel-logo img {
-    width: 100%;
+body.rechner-page .funnel-logo-fixed {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding-top: 12px;
+    background: transparent;
+    pointer-events: none;
+}
+
+body.rechner-page .funnel-logo-fixed img {
+    width: 120px;
     height: auto;
     display: block;
 }
 
 /* Funnel Wrapper - Prevents Content Overlap */
-.funnel-wrapper {
-    padding-top: 80px;
+body.rechner-page .funnel-wrapper {
+    padding-top: 140px;
+}
+
+/* Hide any header on rechner page */
+body.rechner-page .header {
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* ==========================================
@@ -755,15 +768,13 @@ body {
    ========================================== */
 
 @media (max-width: 768px) {
-    /* Funnel Logo - Mobile */
-    .funnel-logo {
-        width: 70px;
-        top: 8px;
+    /* Funnel Logo - Mobile (rechner page only) */
+    body.rechner-page .funnel-logo-fixed img {
+        width: 90px;
     }
 
-    /* Funnel Wrapper - Mobile */
-    .funnel-wrapper {
-        padding-top: 75px;
+    body.rechner-page .funnel-wrapper {
+        padding-top: 110px;
     }
 
     /* Container & Spacing */
