@@ -446,16 +446,26 @@ section {
     margin: var(--spacing-xl) auto 0;
     position: relative;
     overflow: hidden;
+    padding: 0 24px;
 }
 
 .reviews-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: var(--spacing-lg);
+    scroll-snap-type: x mandatory;
+}
+
+.review-slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    scroll-snap-align: center;
 }
 
 .review-card {
-    min-width: 100%;
+    width: 100%;
+    max-width: 740px;
     background: var(--background-lighter);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -464,6 +474,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    box-sizing: border-box;
 }
 
 .review-stars {
@@ -1093,7 +1104,12 @@ section {
         padding: var(--spacing-xxl) 0;
     }
 
+    .reviews-carousel {
+        padding: 0 16px;
+    }
+
     .review-card {
+        max-width: 92vw;
         padding: var(--spacing-lg);
     }
 

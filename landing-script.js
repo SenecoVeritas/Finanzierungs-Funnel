@@ -200,7 +200,7 @@ function checkCookieConsent() {
 document.addEventListener('DOMContentLoaded', () => {
     const reviewsTrack = document.querySelector('.reviews-track');
     const dots = document.querySelectorAll('.reviews-dots .dot');
-    const reviewCards = document.querySelectorAll('.review-card');
+    const reviewSlides = document.querySelectorAll('.review-slide');
 
     if (!reviewsTrack || !dots.length) return; // Exit if elements not found
 
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function goToSlide(slideIndex) {
         // Ensure slide index is within bounds
         if (slideIndex < 0) slideIndex = 0;
-        if (slideIndex >= reviewCards.length) slideIndex = reviewCards.length - 1;
+        if (slideIndex >= reviewSlides.length) slideIndex = reviewSlides.length - 1;
 
         currentSlide = slideIndex;
 
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextSlide() {
-        const nextIndex = (currentSlide + 1) % reviewCards.length;
+        const nextIndex = (currentSlide + 1) % reviewSlides.length;
         goToSlide(nextIndex);
     }
 
