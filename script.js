@@ -253,40 +253,63 @@ function submitForm() {
         return;
     }
 
-    // Show loading state (optional)
+    // Show loading state
     const submitButton = event.target;
     submitButton.disabled = true;
     submitButton.textContent = 'Wird gesendet...';
 
-    // Simulate form submission
-    setTimeout(() => {
-        console.log('Form Data:', formData);
+    // Get Apps Script Web App URL (set this after deployment)
+    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
 
-        // In production, you would send this data to your backend
-        // Example:
-        // fetch('/api/submit-financing-request', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(formData)
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     nextStep();
-        // })
-        // .catch(error => {
-        //     alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
-        //     submitButton.disabled = false;
-        //     submitButton.textContent = 'Angebot anfordern';
-        // });
+    // Prepare data payload
+    const payload = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        financingType: formData.financingType,
+        loanAmount: formData.loanAmount,
+        equity: formData.equity,
+        duration: formData.duration,
+        message: formData.message || '',
+        origin: window.location.origin
+    };
 
-        // For demo purposes, just go to the next step
-        nextStep();
+    // Send to Google Apps Script
+    fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload),
+        mode: 'cors'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Lead erfolgreich gespeichert:', data.data.lead_id);
 
+            // Track successful submission (optional analytics)
+            if (typeof trackFormSubmission === 'function') {
+                trackFormSubmission();
+            }
+
+            // Go to success step
+            nextStep();
+        } else {
+            throw new Error(data.message || 'Unbekannter Fehler');
+        }
+    })
+    .catch(error => {
+        console.error('Fehler beim Senden:', error);
+
+        // Show user-friendly error message
+        alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.');
+
+        // Reset button
         submitButton.disabled = false;
         submitButton.textContent = 'Angebot anfordern';
-    }, 1000);
+    });
 }
 
 // ==========================================
