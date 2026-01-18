@@ -1196,9 +1196,13 @@ section {
         width: 120px;
     }
 
+    .footer-seal-column {
+        margin-top: 16px;
+    }
+
     .footer-seal-img {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
 
     .footer-contact-heading {
