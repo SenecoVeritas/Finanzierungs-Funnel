@@ -680,6 +680,9 @@ section {
     width: 137px;
     height: 137px;
     display: block;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 8px;
 }
 
 /* Column 3: Contact Info */
