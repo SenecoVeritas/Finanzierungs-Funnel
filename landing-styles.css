@@ -433,6 +433,107 @@ section {
 }
 
 /* ==========================================
+   Trust Section - Google Reviews
+   ========================================== */
+
+.trust-section {
+    padding: var(--spacing-xxxl) 0;
+    background-color: var(--white);
+}
+
+.reviews-carousel {
+    max-width: 1000px;
+    margin: var(--spacing-xl) auto 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.reviews-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: var(--spacing-lg);
+}
+
+.review-card {
+    min-width: 100%;
+    background: var(--background-lighter);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.review-stars {
+    display: flex;
+    gap: 4px;
+}
+
+.review-stars .star {
+    color: #FFA500;
+    font-size: 20px;
+}
+
+.review-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-medium);
+    font-style: italic;
+    margin: 0;
+}
+
+.review-author {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: var(--spacing-sm);
+}
+
+.review-source {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.reviews-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.reviews-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.reviews-dots .dot:hover {
+    background-color: var(--primary-light);
+}
+
+.reviews-dots .dot.active {
+    background-color: var(--primary-color);
+    width: 24px;
+    border-radius: 5px;
+}
+
+.reviews-disclaimer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: var(--spacing-lg);
+    font-style: italic;
+}
+
+/* ==========================================
    How It Works / Timeline Section
    ========================================== */
 
@@ -964,6 +1065,23 @@ section {
     }
 
     .benefit-title {
+        font-size: 18px;
+    }
+
+    /* Trust Section - Mobile */
+    .trust-section {
+        padding: var(--spacing-xxl) 0;
+    }
+
+    .review-card {
+        padding: var(--spacing-lg);
+    }
+
+    .review-text {
+        font-size: 15px;
+    }
+
+    .review-stars .star {
         font-size: 18px;
     }
 

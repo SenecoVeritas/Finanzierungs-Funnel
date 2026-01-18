@@ -192,3 +192,100 @@ function checkCookieConsent() {
 
 // Check on load
 // checkCookieConsent();
+
+// ==========================================
+// Trust Section - Reviews Carousel
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const reviewsTrack = document.querySelector('.reviews-track');
+    const dots = document.querySelectorAll('.reviews-dots .dot');
+    const reviewCards = document.querySelectorAll('.review-card');
+
+    if (!reviewsTrack || !dots.length) return; // Exit if elements not found
+
+    let currentSlide = 0;
+    let autoplayInterval;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function goToSlide(slideIndex) {
+        // Ensure slide index is within bounds
+        if (slideIndex < 0) slideIndex = 0;
+        if (slideIndex >= reviewCards.length) slideIndex = reviewCards.length - 1;
+
+        currentSlide = slideIndex;
+
+        // Move track
+        reviewsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % reviewCards.length;
+        goToSlide(nextIndex);
+    }
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+            resetAutoplay(); // Reset autoplay on manual interaction
+        });
+    });
+
+    // Touch/Swipe support for mobile
+    reviewsTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    reviewsTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swiped left - next slide
+                goToSlide(currentSlide + 1);
+            } else {
+                // Swiped right - previous slide
+                goToSlide(currentSlide - 1);
+            }
+            resetAutoplay();
+        }
+    }
+
+    // Optional autoplay (subtle, every 8 seconds)
+    function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 8000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(autoplayInterval);
+        startAutoplay();
+    }
+
+    // Start autoplay (optional - comment out if not desired)
+    startAutoplay();
+
+    // Pause autoplay when user hovers (desktop)
+    const carousel = document.querySelector('.reviews-carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            startAutoplay();
+        });
+    }
+});
