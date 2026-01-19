@@ -1,0 +1,22 @@
+{
+  "name": "rs-finance-funnel",
+  "version": "2.0.0",
+  "description": "RS Finance Lead Generation Funnel with Airtable Backend",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "airtable": "^0.12.2"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Nico Nadolph",
+  "license": "UNLICENSED",
+  "private": true
+}

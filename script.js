@@ -258,8 +258,8 @@ function submitForm() {
     submitButton.disabled = true;
     submitButton.textContent = 'Wird gesendet...';
 
-    // Get Apps Script Web App URL (set this after deployment)
-    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+    // Serverless Function Endpoint (Vercel/Netlify)
+    const WEBHOOK_URL = '/api/submit-lead';
 
     // Prepare data payload
     const payload = {
@@ -271,18 +271,16 @@ function submitForm() {
         loanAmount: formData.loanAmount,
         equity: formData.equity,
         duration: formData.duration,
-        message: formData.message || '',
-        origin: window.location.origin
+        message: formData.message || ''
     };
 
-    // Send to Google Apps Script
-    fetch(APPS_SCRIPT_URL, {
+    // Send to Serverless Function (Airtable Backend)
+    fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload),
-        mode: 'cors'
+        body: JSON.stringify(payload)
     })
     .then(response => response.json())
     .then(data => {
