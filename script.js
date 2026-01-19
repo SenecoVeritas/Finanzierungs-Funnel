@@ -11,6 +11,7 @@ const formData = {
     loanAmount: 200000,
     equity: 40000,
     duration: 25,
+    monthlyRate: 0,
     rateRealistic: '',
     decisionTimeline: '',
     firstName: '',
@@ -290,7 +291,10 @@ function calculateMonthlyRate() {
         (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
         (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
 
-    document.getElementById('monthlyRate').textContent = formatCurrency(Math.round(monthlyPayment));
+    // Store calculated monthly rate in formData
+    formData.monthlyRate = Math.round(monthlyPayment);
+
+    document.getElementById('monthlyRate').textContent = formatCurrency(formData.monthlyRate);
 }
 
 function formatCurrency(value) {
@@ -316,23 +320,32 @@ function submitForm() {
     submitButton.disabled = true;
     submitButton.textContent = 'Wird gesendet...';
 
-    // Serverless Function Endpoint (Vercel/Netlify)
-    const WEBHOOK_URL = '/api/submit-lead';
+    // Make.com Webhook URL
+    const WEBHOOK_URL = 'https://hook.eu2.make.com/yao1laptdza27t9xa0143pkiyblq5jgv';
 
-    // Prepare data payload
+    // Prepare data payload according to specification
     const payload = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
         email: formData.email,
         phone: formData.phone,
-        financingType: formData.financingType,
-        loanAmount: formData.loanAmount,
-        equity: formData.equity,
-        duration: formData.duration,
-        message: formData.message || ''
+
+        financing_type: formData.financingType,
+        financing_amount: formData.loanAmount,
+        available_equity: formData.equity,
+        desired_monthly_rate: formData.monthlyRate,
+
+        realism_check: formData.rateRealistic,
+        decision_timeframe: formData.decisionTimeline,
+
+        message: formData.message || '',
+
+        lead_status: 'New',
+        call_status: 'Neu',
+        source: 'RS Finance Funnel'
     };
 
-    // Send to Serverless Function (Airtable Backend)
+    // Send to Make.com Webhook
     fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: {
@@ -340,10 +353,10 @@ function submitForm() {
         },
         body: JSON.stringify(payload)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log('Lead erfolgreich gespeichert:', data.data.lead_id);
+    .then(response => {
+        // Make webhooks typically return 200 even without JSON body
+        if (response.ok) {
+            console.log('Lead erfolgreich an Make gesendet');
 
             // Track successful submission (optional analytics)
             if (typeof trackFormSubmission === 'function') {
@@ -353,7 +366,7 @@ function submitForm() {
             // Go to success step
             nextStep();
         } else {
-            throw new Error(data.message || 'Unbekannter Fehler');
+            throw new Error('Webhook-Fehler: ' + response.status);
         }
     })
     .catch(error => {
