@@ -4,13 +4,15 @@
 
 // Global State
 let currentStep = 1;
-const totalSteps = 5;
+const totalSteps = 7;
 
 const formData = {
     financingType: '',
     loanAmount: 200000,
     equity: 40000,
     duration: 25,
+    rateRealistic: '',
+    decisionTimeline: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -105,6 +107,20 @@ function validateCurrentStep() {
             return true;
 
         case 4:
+            if (!formData.rateRealistic) {
+                alert('Bitte wählen Sie eine Option aus.');
+                return false;
+            }
+            return true;
+
+        case 5:
+            if (!formData.decisionTimeline) {
+                alert('Bitte wählen Sie eine Option aus.');
+                return false;
+            }
+            return true;
+
+        case 6:
             return validateContactForm();
 
         default:
@@ -194,6 +210,48 @@ function selectFinancingType(type) {
     const nextButton = document.getElementById('step2Next');
     if (nextButton) {
         nextButton.disabled = false;
+    }
+}
+
+// ==========================================
+// Step 4: Rate Realistic Selection
+// ==========================================
+
+function selectRateRealistic(value) {
+    formData.rateRealistic = value;
+
+    // Update visual selection
+    document.querySelectorAll('#step4 .option-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+
+    event.currentTarget.classList.add('selected');
+
+    // Update radio button
+    const radio = document.getElementById('rate-' + value);
+    if (radio) {
+        radio.checked = true;
+    }
+}
+
+// ==========================================
+// Step 5: Decision Timeline Selection
+// ==========================================
+
+function selectDecisionTimeline(value) {
+    formData.decisionTimeline = value;
+
+    // Update visual selection
+    document.querySelectorAll('#step5 .option-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+
+    event.currentTarget.classList.add('selected');
+
+    // Update radio button
+    const radio = document.getElementById('timeline-' + value);
+    if (radio) {
+        radio.checked = true;
     }
 }
 

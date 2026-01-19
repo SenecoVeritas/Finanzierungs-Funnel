@@ -32,10 +32,18 @@
                 </div>
                 <div class="progress-step" data-step="4">
                     <div class="step-circle">4</div>
-                    <div class="step-label">Kontakt</div>
+                    <div class="step-label">Prüfung</div>
                 </div>
                 <div class="progress-step" data-step="5">
                     <div class="step-circle">5</div>
+                    <div class="step-label">Zeitplan</div>
+                </div>
+                <div class="progress-step" data-step="6">
+                    <div class="step-circle">6</div>
+                    <div class="step-label">Kontakt</div>
+                </div>
+                <div class="progress-step" data-step="7">
+                    <div class="step-circle">7</div>
                     <div class="step-label">Fertig</div>
                 </div>
             </div>
@@ -246,8 +254,74 @@
                 </div>
             </div>
 
-            <!-- Step 4: Contact Details -->
+            <!-- Step 4: Rate Realistic Check -->
             <div class="step-content" id="step4">
+                <h2 class="section-heading">Ist diese geschätzte monatliche Rate für Sie realistisch?</h2>
+
+                <div class="options-grid">
+                    <div class="option-card" onclick="selectRateRealistic('ja')">
+                        <h3 class="option-title">Ja, das ist für mich realistisch</h3>
+                        <div class="option-radio">
+                            <input type="radio" name="rateRealistic" value="ja" id="rate-ja">
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="selectRateRealistic('vielleicht')">
+                        <h3 class="option-title">Vielleicht, ich möchte das besprechen</h3>
+                        <div class="option-radio">
+                            <input type="radio" name="rateRealistic" value="vielleicht" id="rate-vielleicht">
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="selectRateRealistic('nein')">
+                        <h3 class="option-title">Nein, das wäre für mich schwierig</h3>
+                        <div class="option-radio">
+                            <input type="radio" name="rateRealistic" value="nein" id="rate-nein">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="previousStep()">Zurück</button>
+                    <button class="btn-primary" onclick="nextStep()">Weiter</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Decision Timeline -->
+            <div class="step-content" id="step5">
+                <h2 class="section-heading">Wann planen Sie grundsätzlich eine Entscheidung zu treffen?</h2>
+
+                <div class="options-grid">
+                    <div class="option-card" onclick="selectDecisionTimeline('sofort')">
+                        <h3 class="option-title">So bald wie möglich</h3>
+                        <div class="option-radio">
+                            <input type="radio" name="decisionTimeline" value="sofort" id="timeline-sofort">
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="selectDecisionTimeline('monate')">
+                        <h3 class="option-title">In den nächsten Monaten</h3>
+                        <div class="option-radio">
+                            <input type="radio" name="decisionTimeline" value="monate" id="timeline-monate">
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="selectDecisionTimeline('offen')">
+                        <h3 class="option-title">Noch offen / langfristig</h3>
+                        <div class="option-radio">
+                            <input type="radio" name="decisionTimeline" value="offen" id="timeline-offen">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="previousStep()">Zurück</button>
+                    <button class="btn-primary" onclick="nextStep()">Weiter</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Contact Details -->
+            <div class="step-content" id="step6">
                 <h2 class="section-heading">Fast geschafft!</h2>
                 <p class="section-subtitle">Hinterlassen Sie uns Ihre Kontaktdaten für den kostenlosen Vergleich</p>
 
@@ -299,8 +373,8 @@
                 </div>
             </div>
 
-            <!-- Step 5: Thank You -->
-            <div class="step-content" id="step5">
+            <!-- Step 7: Thank You -->
+            <div class="step-content" id="step7">
                 <div class="success-container">
                     <div class="success-icon">
                         <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
