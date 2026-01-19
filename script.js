@@ -321,7 +321,7 @@ function submitForm() {
     submitButton.textContent = 'Wird gesendet...';
 
     // Make.com Webhook URL
-    const WEBHOOK_URL = 'https://hook.eu2.make.com/yao1laptdza27t9xa0143pkiyblq5jgv';
+    const WEBHOOK_URL = 'https://hook.eu2.make.com/bgbsqrlu16mzzurjhuvpb2k1lnafeuk5';
 
     // Prepare data payload according to specification
     const payload = {
