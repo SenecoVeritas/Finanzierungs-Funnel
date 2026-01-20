@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumente sicher hochladen | RS Finanzierung</title>
+
+    <style>
+        /* ==========================================
+           RESET & BASE STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ==========================================
+           BRANDING HEADER
+           ========================================== */
+        .branding-header {
+            text-align: center;
+            padding: 24px 0;
+            margin-bottom: 24px;
+        }
+
+        .branding-header a {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .branding-header a:hover {
+            opacity: 0.7;
+        }
+
+        /* ==========================================
+           LAYOUT CONTAINER
+           ========================================== */
+        .upload-container {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        /* ==========================================
+           HEADER SECTION
+           ========================================== */
+        .upload-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .upload-header h1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .upload-header p {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================
+           UPLOAD CARD
+           ========================================== */
+        .upload-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 24px;
+            transition: all 0.2s ease;
+        }
+
+        /* ==========================================
+           DROP ZONE
+           ========================================== */
+        .drop-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 48px 24px;
+            text-align: center;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .drop-zone:hover {
+            border-color: #2c3e50;
+            background: #f8fafc;
+        }
+
+        .drop-zone.drag-over {
+            border-color: #2c3e50;
+            background: #eff6ff;
+            border-style: solid;
+        }
+
+        .drop-zone-icon {
+            margin-bottom: 16px;
+        }
+
+        .drop-zone-icon svg {
+            width: 48px;
+            height: 48px;
+            color: #94a3b8;
+        }
+
+        .drop-zone-text {
+            margin-bottom: 16px;
+        }
+
+        .drop-zone-text h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .drop-zone-text p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .drop-zone-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .drop-zone-button:hover {
+            background: #1a252f;
+            transform: translateY(-1px);
+        }
+
+        .drop-zone-formats {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* Hidden file input */
+        .file-input {
+            display: none;
+        }
+
+        /* ==========================================
+           FILE LIST
+           ========================================== */
+        .file-list {
+            margin-top: 24px;
+            display: none;
+        }
+
+        .file-list.has-files {
+            display: block;
+        }
+
+        .file-list h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .file-item:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .file-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: #eff6ff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-icon svg {
+            width: 18px;
+            height: 18px;
+            color: #2c3e50;
+        }
+
+        .file-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .file-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-size {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .file-remove {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease;
+        }
+
+        .file-remove:hover {
+            color: #ef4444;
+        }
+
+        .file-remove svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ==========================================
+           SUBMIT BUTTON
+           ========================================== */
+        .submit-section {
+            margin-top: 32px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px 32px;
+            background: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-button:hover:not(:disabled) {
+            background: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        }
+
+        .submit-button:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-button.uploading {
+            background: #64748b;
+            cursor: wait;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        .submit-button.uploading .spinner {
+            display: block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ==========================================
+           PRIVACY NOTICE
+           ========================================== */
+        .privacy-notice {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f1f5f9;
+            border-left: 3px solid #2c3e50;
+            border-radius: 6px;
+        }
+
+        .privacy-notice p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .privacy-notice svg {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 6px;
+            color: #2c3e50;
+        }
+
+        /* ==========================================
+           SUCCESS MESSAGE
+           ========================================== */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #16a34a;
+        }
+
+        .success-message h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .success-message p {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        /* ==========================================
+           RESPONSIVE DESIGN
+           ========================================== */
+        @media (max-width: 640px) {
+            .upload-container {
+                margin: 32px auto;
+                padding: 0 16px;
+            }
+
+            .upload-header h1 {
+                font-size: 26px;
+            }
+
+            .upload-header p {
+                font-size: 15px;
+            }
+
+            .upload-card {
+                padding: 24px;
+            }
+
+            .drop-zone {
+                padding: 32px 16px;
+            }
+
+            .drop-zone-text h3 {
+                font-size: 16px;
+            }
+
+            .drop-zone-text p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Branding Header -->
+    <div class="branding-header">
+        <a href="https://www.rs-finanzierung.at" target="_blank">RS Finanzierung</a>
+    </div>
+
+    <div class="upload-container">
+        <!-- Header Section -->
+        <div class="upload-header">
+            <h1>Dokumente sicher hochladen</h1>
+            <p>Bitte laden Sie hier die angeforderten Unterlagen hoch. Der Upload ist verschlüsselt und ausschließlich für diesen Vorgang gültig.</p>
+        </div>
+
+        <!-- Upload Form -->
+        <div id="uploadForm">
+            <div class="upload-card">
+                <!-- Drop Zone -->
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-zone-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                    </div>
+                    <div class="drop-zone-text">
+                        <h3>Dateien hierher ziehen</h3>
+                        <p>oder klicken Sie auf den Button</p>
+                    </div>
+                    <button type="button" class="drop-zone-button" id="selectFilesBtn">
+                        Dateien auswählen
+                    </button>
+                    <p class="drop-zone-formats">
+                        Erlaubte Formate: PDF, JPG, PNG · Max. 10 MB pro Datei
+                    </p>
+                    <input type="file" id="fileInput" class="file-input" multiple accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <!-- File List -->
+                <div class="file-list" id="fileList">
+                    <h4>Ausgewählte Dateien</h4>
+                    <div id="fileItems"></div>
+                </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="submit-section">
+                <button type="button" class="submit-button" id="submitBtn" disabled>
+                    <span class="spinner"></span>
+                    <span id="submitBtnText">Dokumente hochladen</span>
+                </button>
+            </div>
+
+            <!-- Privacy Notice -->
+            <div class="privacy-notice">
+                <p>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                    Ihre Daten werden vertraulich behandelt und nur an den zuständigen Finanzierungspartner weitergeleitet.
+                </p>
+            </div>
+        </div>
+
+        <!-- Success Message (hidden initially) -->
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h2>Upload erfolgreich!</h2>
+            <p>Ihre Dokumente wurden sicher übermittelt. Wir werden uns in Kürze bei Ihnen melden.</p>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // GLOBAL STATE
+        // ==========================================
+        let selectedFiles = [];
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+        const ALLOWED_TYPES = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+
+        // ==========================================
+        // DOM ELEMENTS
+        // ==========================================
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const selectFilesBtn = document.getElementById('selectFilesBtn');
+        const fileList = document.getElementById('fileList');
+        const fileItems = document.getElementById('fileItems');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitBtnText = document.getElementById('submitBtnText');
+        const uploadForm = document.getElementById('uploadForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // ==========================================
+        // EVENT LISTENERS
+        // ==========================================
+
+        // Click on drop zone or button to select files
+        dropZone.addEventListener('click', () => fileInput.click());
+        selectFilesBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            fileInput.click();
+        });
+
+        // File input change
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // Drag & Drop events
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        // Submit button
+        submitBtn.addEventListener('click', submitUpload);
+
+        // ==========================================
+        // FILE HANDLING FUNCTIONS
+        // ==========================================
+
+        function handleFiles(files) {
+            const fileArray = Array.from(files);
+
+            fileArray.forEach(file => {
+                // Validate file type
+                if (!ALLOWED_TYPES.includes(file.type)) {
+                    alert(`Dateiformat nicht erlaubt: ${file.name}\nErlaubte Formate: PDF, JPG, PNG`);
+                    return;
+                }
+
+                // Validate file size
+                if (file.size > MAX_FILE_SIZE) {
+                    alert(`Datei zu groß: ${file.name}\nMaximale Größe: 10 MB`);
+                    return;
+                }
+
+                // Check if file already exists
+                const exists = selectedFiles.some(f => f.name === file.name && f.size === file.size);
+                if (!exists) {
+                    selectedFiles.push(file);
+                }
+            });
+
+            updateFileList();
+            updateSubmitButton();
+        }
+
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            updateFileList();
+            updateSubmitButton();
+        }
+
+        function updateFileList() {
+            if (selectedFiles.length === 0) {
+                fileList.classList.remove('has-files');
+                fileItems.innerHTML = '';
+                return;
+            }
+
+            fileList.classList.add('has-files');
+            fileItems.innerHTML = selectedFiles.map((file, index) => {
+                const fileSize = formatFileSize(file.size);
+                const fileIcon = getFileIcon(file.type);
+
+                return `
+                    <div class="file-item">
+                        <div class="file-info">
+                            <div class="file-icon">
+                                ${fileIcon}
+                            </div>
+                            <div class="file-details">
+                                <div class="file-name">${file.name}</div>
+                                <div class="file-size">${fileSize}</div>
+                            </div>
+                        </div>
+                        <button type="button" class="file-remove" onclick="removeFile(${index})">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateSubmitButton() {
+            submitBtn.disabled = selectedFiles.length === 0;
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        function getFileIcon(type) {
+            if (type === 'application/pdf') {
+                return `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>`;
+            } else {
+                return `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>`;
+            }
+        }
+
+        // ==========================================
+        // URL TOKEN EXTRACTION
+        // ==========================================
+
+        function getTokenFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('token') || null;
+        }
+
+        // ==========================================
+        // UPLOAD SUBMISSION (PLACEHOLDER)
+        // ==========================================
+
+        async function submitUpload() {
+            if (selectedFiles.length === 0) return;
+
+            // Get token from URL
+            const token = getTokenFromURL();
+
+            // Show loading state
+            submitBtn.classList.add('uploading');
+            submitBtn.disabled = true;
+            submitBtnText.textContent = 'Wird hochgeladen...';
+
+            try {
+                // PLACEHOLDER: This is where the actual upload logic will go
+                // For now, simulate an upload with a timeout
+                await simulateUpload(token);
+
+                // Show success message
+                showSuccess();
+            } catch (error) {
+                console.error('Upload failed:', error);
+                alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
+
+                // Reset button
+                submitBtn.classList.remove('uploading');
+                submitBtn.disabled = false;
+                submitBtnText.textContent = 'Dokumente hochladen';
+            }
+        }
+
+        // ==========================================
+        // SIMULATED UPLOAD (PLACEHOLDER)
+        // ==========================================
+
+        function simulateUpload(token) {
+            return new Promise((resolve) => {
+                console.log('=== UPLOAD SIMULATION ===');
+                console.log('Token:', token || 'No token provided');
+                console.log('Files:', selectedFiles.map(f => ({ name: f.name, size: f.size, type: f.type })));
+
+                // Simulate upload delay
+                setTimeout(() => {
+                    resolve({ success: true });
+                }, 2000);
+            });
+        }
+
+        // ==========================================
+        // SUCCESS DISPLAY
+        // ==========================================
+
+        function showSuccess() {
+            uploadForm.style.display = 'none';
+            successMessage.classList.add('show');
+        }
+
+        // ==========================================
+        // INITIALIZATION
+        // ==========================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Upload page initialized');
+            const token = getTokenFromURL();
+            if (token) {
+                console.log('Token detected:', token);
+            }
+        });
+
+        // Make removeFile available globally
+        window.removeFile = removeFile;
+    </script>
+</body>
+</html>
