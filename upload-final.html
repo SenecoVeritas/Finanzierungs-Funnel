@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumente sicher hochladen | RS Finanzierung</title>
+
+    <style>
+        /* ==========================================
+           BASE STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        /* ==========================================
+           BRANDING
+           ========================================== */
+        .branding {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .branding a {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .branding a:hover {
+            opacity: 0.7;
+        }
+
+        /* ==========================================
+           CONTAINER
+           ========================================== */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================
+           HEADER
+           ========================================== */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        /* ==========================================
+           UPLOAD CARD
+           ========================================== */
+        .upload-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        /* ==========================================
+           FILE INPUT
+           ========================================== */
+        .file-input-wrapper {
+            margin-bottom: 24px;
+        }
+
+        .file-input-wrapper label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .file-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            background: #ffffff;
+            font-size: 15px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .file-input:hover {
+            border-color: #2c3e50;
+        }
+
+        .file-input:focus {
+            outline: none;
+            border-color: #2c3e50;
+        }
+
+        .file-hint {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+
+        /* ==========================================
+           UPLOAD BUTTON
+           ========================================== */
+        .upload-button {
+            width: 100%;
+            padding: 16px;
+            background: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-button:hover:not(:disabled) {
+            background: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+        }
+
+        .upload-button:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .upload-button.uploading {
+            background: #64748b;
+            cursor: wait;
+        }
+
+        /* ==========================================
+           STATUS BOX
+           ========================================== */
+        .status-box {
+            display: none;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .status-box.show {
+            display: block;
+        }
+
+        /* Loading */
+        .status-box.loading {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+        }
+
+        /* Success */
+        .status-box.success {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+
+        /* Error */
+        .status-box.error {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+
+        .status-box h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .status-box p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           ERROR STATE (No Token)
+           ========================================== */
+        .error-state {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .error-state.show {
+            display: block;
+        }
+
+        .error-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background: #fee2e2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .error-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #dc2626;
+        }
+
+        .error-state h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .error-state p {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        /* ==========================================
+           PRIVACY NOTICE
+           ========================================== */
+        .privacy-notice {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f1f5f9;
+            border-left: 3px solid #2c3e50;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .upload-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Branding -->
+    <div class="branding">
+        <a href="https://www.rs-finanzierung.at" target="_blank">RS Finanzierung</a>
+    </div>
+
+    <div class="container">
+        <!-- Error State: No Token (hidden initially) -->
+        <div class="error-state" id="errorState">
+            <div class="error-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+            <h2>Ungültiger Upload-Link</h2>
+            <p>Dieser Link ist nicht gültig oder abgelaufen. Bitte wenden Sie sich an Ihren Ansprechpartner.</p>
+        </div>
+
+        <!-- Main Content (hidden if no token) -->
+        <div id="mainContent">
+            <!-- Header -->
+            <div class="header">
+                <h1>Dokumente sicher hochladen</h1>
+                <p>Bitte laden Sie hier die angeforderten Unterlagen hoch.</p>
+            </div>
+
+            <!-- Upload Form -->
+            <div class="upload-card">
+                <form id="uploadForm">
+                    <div class="file-input-wrapper">
+                        <label for="fileInput">Dateien auswählen</label>
+                        <input
+                            type="file"
+                            id="fileInput"
+                            class="file-input"
+                            multiple
+                            accept=".pdf,.jpg,.jpeg,.png"
+                            required
+                        >
+                        <p class="file-hint">Erlaubte Formate: PDF, JPG, PNG · Max. 10 MB pro Datei</p>
+                    </div>
+
+                    <button type="submit" class="upload-button" id="uploadButton">
+                        Dokumente hochladen
+                    </button>
+                </form>
+
+                <!-- Status Box -->
+                <div class="status-box" id="statusBox">
+                    <h3 id="statusTitle"></h3>
+                    <p id="statusMessage"></p>
+                </div>
+            </div>
+
+            <!-- Privacy Notice -->
+            <div class="privacy-notice">
+                Ihre Daten werden verschlüsselt übertragen und vertraulich behandelt.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // CONFIGURATION
+        // ==========================================
+        const WEBHOOK_URL = 'https://hook.eu2.make.com/pd6fa46omvydxxyfu8ve1u7tsik76kgu';
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
+        // ==========================================
+        // DOM ELEMENTS
+        // ==========================================
+        const errorState = document.getElementById('errorState');
+        const mainContent = document.getElementById('mainContent');
+        const uploadForm = document.getElementById('uploadForm');
+        const fileInput = document.getElementById('fileInput');
+        const uploadButton = document.getElementById('uploadButton');
+        const statusBox = document.getElementById('statusBox');
+        const statusTitle = document.getElementById('statusTitle');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // ==========================================
+        // GLOBAL STATE
+        // ==========================================
+        let uploadToken = null;
+
+        // ==========================================
+        // 1. READ TOKEN FROM URL
+        // ==========================================
+
+        /**
+         * Extracts token from URL query parameter
+         * Example: ?token=ABC123
+         */
+        function getTokenFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('token');
+        }
+
+        /**
+         * Validates that token exists
+         * If no token: show error, hide form
+         */
+        function validateToken() {
+            uploadToken = getTokenFromURL();
+
+            if (!uploadToken || uploadToken.trim() === '') {
+                // No token found - show error
+                mainContent.style.display = 'none';
+                errorState.classList.add('show');
+                return false;
+            }
+
+            // Token exists - show form
+            errorState.classList.remove('show');
+            mainContent.style.display = 'block';
+            return true;
+        }
+
+        // ==========================================
+        // 2. FILE VALIDATION
+        // ==========================================
+
+        /**
+         * Validates selected files
+         * Checks: file size, file type
+         */
+        function validateFiles(files) {
+            const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+
+            for (let file of files) {
+                // Check file size
+                if (file.size > MAX_FILE_SIZE) {
+                    showStatus('error', 'Datei zu groß', `${file.name} ist größer als 10 MB.`);
+                    return false;
+                }
+
+                // Check file type
+                if (!allowedTypes.includes(file.type)) {
+                    showStatus('error', 'Ungültiges Format', `${file.name} hat ein nicht erlaubtes Format.`);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // ==========================================
+        // 3. UPLOAD HANDLER
+        // ==========================================
+
+        /**
+         * Handles form submission
+         * Sends files + token to Make webhook
+         */
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const files = fileInput.files;
+
+            // Check if files selected
+            if (files.length === 0) {
+                showStatus('error', 'Keine Dateien ausgewählt', 'Bitte wählen Sie mindestens eine Datei aus.');
+                return;
+            }
+
+            // Validate files
+            if (!validateFiles(files)) {
+                return;
+            }
+
+            // Prepare FormData
+            const formData = new FormData();
+
+            // Add token (UNCHANGED from URL)
+            formData.append('token', uploadToken);
+
+            // Add all files
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);
+            }
+
+            // Show loading state
+            showStatus('loading', 'Upload läuft...', 'Ihre Dokumente werden hochgeladen.');
+            uploadButton.disabled = true;
+            uploadButton.classList.add('uploading');
+            uploadButton.textContent = 'Wird hochgeladen...';
+
+            try {
+                // Send to Make webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // Check response
+                if (response.ok) {
+                    // Success
+                    showStatus('success', 'Upload erfolgreich', 'Ihre Dokumente wurden erfolgreich übermittelt. Wir werden uns in Kürze bei Ihnen melden.');
+
+                    // Disable form after success
+                    fileInput.disabled = true;
+                    uploadButton.textContent = 'Upload abgeschlossen';
+                } else {
+                    // Error response from webhook
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+            } catch (error) {
+                console.error('Upload failed:', error);
+
+                // Show error
+                showStatus('error', 'Upload fehlgeschlagen', 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder wenden Sie sich an Ihren Ansprechpartner.');
+
+                // Reset button
+                uploadButton.disabled = false;
+                uploadButton.classList.remove('uploading');
+                uploadButton.textContent = 'Dokumente hochladen';
+            }
+        });
+
+        // ==========================================
+        // 4. STATUS DISPLAY
+        // ==========================================
+
+        /**
+         * Shows status message
+         * Types: loading, success, error
+         */
+        function showStatus(type, title, message) {
+            statusBox.className = 'status-box show ' + type;
+            statusTitle.textContent = title;
+            statusMessage.textContent = message;
+        }
+
+        // ==========================================
+        // 5. INITIALIZATION
+        // ==========================================
+
+        /**
+         * Initialize page on load
+         * Check for token in URL
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('=== Upload Page Initialized ===');
+
+            // Validate token exists
+            const hasToken = validateToken();
+
+            if (hasToken) {
+                console.log('Token found in URL');
+            } else {
+                console.warn('No token found in URL');
+            }
+        });
+    </script>
+</body>
+</html>
