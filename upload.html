@@ -735,10 +735,22 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Upload page initialized');
-            const token = getTokenFromURL();
-            if (token) {
-                console.log('Token detected:', token);
+
+            // Token validation
+            const params = new URLSearchParams(window.location.search);
+            const uploadToken = params.get("token");
+
+            if (!uploadToken) {
+                document.body.innerHTML = `
+                    <div style="max-width:600px;margin:80px auto;text-align:center;padding:0 24px;">
+                        <h2 style="font-size:24px;font-weight:600;color:#2c3e50;margin-bottom:12px;">Ungültiger Upload-Link</h2>
+                        <p style="font-size:16px;color:#64748b;">Dieser Upload-Link ist nicht gültig oder abgelaufen.</p>
+                    </div>
+                `;
+                return;
             }
+
+            console.log('Token detected:', uploadToken);
         });
 
         // Make removeFile available globally
