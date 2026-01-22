@@ -307,6 +307,30 @@ function formatCurrency(value) {
 }
 
 // ==========================================
+// Upload Token Generation
+// ==========================================
+
+/**
+ * Generates a cryptographically secure upload token
+ * Token is generated ONCE per lead submission
+ * Uses Web Crypto API for security
+ */
+function generateUploadToken() {
+    const array = new Uint8Array(32);
+    crypto.getRandomValues(array);
+
+    // Convert to base62 (a-zA-Z0-9)
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let token = '';
+
+    for (let i = 0; i < array.length; i++) {
+        token += chars[array[i] % chars.length];
+    }
+
+    return token;
+}
+
+// ==========================================
 // Step 4: Form Submission
 // ==========================================
 
@@ -322,6 +346,10 @@ function submitForm() {
 
     // Make.com Webhook URL
     const WEBHOOK_URL = 'https://hook.eu2.make.com/bgbsqrlu16mzzurjhuvpb2k1lnafeuk5';
+
+    // Generate upload token (ONLY HERE, ONLY ONCE)
+    const uploadToken = generateUploadToken();
+    console.log('Generated upload token:', uploadToken);
 
     // Prepare data payload according to specification
     const payload = {
@@ -339,6 +367,10 @@ function submitForm() {
         decision_timeframe: formData.decisionTimeline,
 
         message: formData.message || '',
+
+        // Upload Token (NEW)
+        upload_token: uploadToken,
+        upload_status: 'offen',
 
         lead_status: 'New',
         call_status: 'Neu',

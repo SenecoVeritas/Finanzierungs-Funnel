@@ -337,7 +337,8 @@
         // ==========================================
         // CONFIGURATION
         // ==========================================
-        const WEBHOOK_URL = 'https://hook.eu2.make.com/pd6fa46omvydxxyfu8ve1u7tsik76kgu';
+        const WEBHOOK_VALIDATE_TOKEN = 'https://hook.eu2.make.com/ef1r4n20ghhuelklx9l56y2r89dtqwc6';
+        const WEBHOOK_UPLOAD = 'https://hook.eu2.make.com/pd6fa46omvydxxyfu8ve1u7tsik76kgu';
         const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
         // ==========================================
@@ -371,12 +372,41 @@
         }
 
         /**
-         * Validates that token exists
-         * If no token: show error, hide form
+         * Validates token with Make.com (Server-side)
+         * Sends token to Webhook B for validation
+         * Returns promise that resolves to true/false
          */
-        function validateToken() {
+        async function validateTokenWithServer(token) {
+            try {
+                const response = await fetch(WEBHOOK_VALIDATE_TOKEN, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ token: token })
+                });
+
+                if (!response.ok) {
+                    return false;
+                }
+
+                const result = await response.json();
+                return result.valid === true;
+
+            } catch (error) {
+                console.error('Token validation failed:', error);
+                return false;
+            }
+        }
+
+        /**
+         * Validates that token exists and is valid
+         * If no token or invalid: show error, hide form
+         */
+        async function validateToken() {
             uploadToken = getTokenFromURL();
 
+            // Check if token exists in URL
             if (!uploadToken || uploadToken.trim() === '') {
                 // No token found - show error
                 mainContent.style.display = 'none';
@@ -384,7 +414,17 @@
                 return false;
             }
 
-            // Token exists - show form
+            // Validate token with server (Make.com)
+            const isValid = await validateTokenWithServer(uploadToken);
+
+            if (!isValid) {
+                // Token invalid or already used - show error
+                mainContent.style.display = 'none';
+                errorState.classList.add('show');
+                return false;
+            }
+
+            // Token exists and is valid - show form
             errorState.classList.remove('show');
             mainContent.style.display = 'block';
             return true;
@@ -461,7 +501,7 @@
 
             try {
                 // Send to Make webhook
-                const response = await fetch(WEBHOOK_URL, {
+                const response = await fetch(WEBHOOK_UPLOAD, {
                     method: 'POST',
                     body: formData
                 });
@@ -512,18 +552,18 @@
 
         /**
          * Initialize page on load
-         * Check for token in URL
+         * Validate token with server before showing form
          */
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             console.log('=== Upload Page Initialized ===');
 
-            // Validate token exists
-            const hasToken = validateToken();
+            // Validate token with server (Make.com)
+            const isValid = await validateToken();
 
-            if (hasToken) {
-                console.log('Token found in URL');
+            if (isValid) {
+                console.log('Token validated successfully');
             } else {
-                console.warn('No token found in URL');
+                console.warn('Token validation failed');
             }
         });
     </script>
