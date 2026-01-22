@@ -338,7 +338,7 @@
         // CONFIGURATION
         // ==========================================
         const WEBHOOK_VALIDATE_TOKEN = 'https://hook.eu2.make.com/c17oggbup320rk3rml2xbyzcullbxtzy';
-        const WEBHOOK_UPLOAD = 'https://hook.eu2.make.com/pd6fa46omvydxxyfu8ve1u7tsik76kgu';
+        const WEBHOOK_UPLOAD = 'https://hook.eu2.make.com/r46106bxn3snsjlisj1iv208po45wvyp';
         const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
         // ==========================================
@@ -494,6 +494,7 @@
             }
 
             // Show loading state
+            console.log('Upload started:', files.length, 'file(s)');
             showStatus('loading', 'Upload läuft...', 'Ihre Dokumente werden hochgeladen.');
             uploadButton.disabled = true;
             uploadButton.classList.add('uploading');
@@ -509,6 +510,7 @@
                 // Check response
                 if (response.ok) {
                     // Success
+                    console.log('Upload successful');
                     showStatus('success', 'Upload erfolgreich', 'Ihre Dokumente wurden erfolgreich übermittelt. Wir werden uns in Kürze bei Ihnen melden.');
 
                     // Disable form after success
