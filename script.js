@@ -344,37 +344,39 @@ function submitForm() {
     submitButton.disabled = true;
     submitButton.textContent = 'Wird gesendet...';
 
-    // Make.com Webhook URL
-    const WEBHOOK_URL = 'https://hook.eu2.make.com/bgbsqrlu16mzzurjhuvpb2k1lnafeuk5';
+    // ==========================================
+    // SZENARIO 1: Make Webhook URL (NEU)
+    // ==========================================
+    const WEBHOOK_URL = 'https://hook.eu2.make.com/kjqducl2q4jfp0p8ti13xi8gripfznyy';
 
     // Generate upload token (ONLY HERE, ONLY ONCE)
     const uploadToken = generateUploadToken();
     console.log('Generated upload token:', uploadToken);
 
-    // Prepare data payload according to specification
+    // ==========================================
+    // Payload für Szenario 1
+    // Felder exakt wie spezifiziert
+    // ==========================================
     const payload = {
-        first_name: formData.firstName,
-        last_name: formData.lastName,
+        // Lead-Daten (für Airtable: Leads)
+        firstName: formData.firstName,
+        lastName: formData.lastName,
         email: formData.email,
         phone: formData.phone,
 
-        financing_type: formData.financingType,
-        financing_amount: formData.loanAmount,
-        available_equity: formData.equity,
-        desired_monthly_rate: formData.monthlyRate,
+        financingType: formData.financingType,
+        loanAmount: formData.loanAmount,
+        equity: formData.equity,
+        monthlyRate: formData.monthlyRate,
 
-        realism_check: formData.rateRealistic,
-        decision_timeframe: formData.decisionTimeline,
+        rateRealistic: formData.rateRealistic,
+        decisionTimeline: formData.decisionTimeline,
 
         message: formData.message || '',
 
-        // Upload Token (NEW)
+        // Upload-Token (generiert im Frontend)
         upload_token: uploadToken,
-        upload_status: 'offen',
-
-        lead_status: 'New',
-        call_status: 'Neu',
-        source: 'RS Finance Funnel'
+        upload_status: 'offen'
     };
 
     // Send to Make.com Webhook
