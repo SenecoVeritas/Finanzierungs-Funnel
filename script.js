@@ -32,6 +32,7 @@ function nextStep() {
         if (currentStep < totalSteps) {
             currentStep++;
             updateUI();
+            trackStepChange(currentStep);
             scrollToTop();
         }
     }
@@ -41,6 +42,7 @@ function previousStep() {
     if (currentStep > 1) {
         currentStep--;
         updateUI();
+        trackStepChange(currentStep);
         scrollToTop();
     }
 }
@@ -49,6 +51,7 @@ function goToStep(step) {
     if (step >= 1 && step <= totalSteps) {
         currentStep = step;
         updateUI();
+        trackStepChange(currentStep);
         scrollToTop();
     }
 }
@@ -449,24 +452,44 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==========================================
 
 function trackPageView() {
-    // Add your analytics tracking here
-    // Example: Google Analytics, Facebook Pixel, etc.
+    // Google Analytics Page View
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'page_title': 'Finanzierungs-Rechner - Schritt ' + currentStep,
+            'page_location': window.location.href,
+            'funnel_step': currentStep
+        });
+    }
     console.log('Page viewed - Step:', currentStep);
 }
 
 function trackStepChange(step) {
     // Track funnel step changes
-    console.log('Step changed to:', step);
-
-    // Example: Google Analytics event
-    // gtag('event', 'funnel_step', {
-    //     'step_number': step,
-    //     'step_name': getStepName(step)
-    // });
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'funnel_step', {
+            'event_category': 'Funnel',
+            'event_label': 'Schritt ' + step,
+            'step_number': step,
+            'step_name': getStepName(step)
+        });
+    }
+    console.log('Step changed to:', step, '-', getStepName(step));
 }
 
 function trackFormSubmission() {
     console.log('Form submitted:', formData);
+
+    // Google Analytics Lead Conversion
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', {
+            'event_category': 'Lead Generation',
+            'event_label': 'Finanzierungsanfrage',
+            'value': formData.loanAmount,
+            'currency': 'EUR',
+            'financing_type': formData.financingType,
+            'loan_amount': formData.loanAmount
+        });
+    }
 
     // Example: Facebook Pixel conversion tracking
     // fbq('track', 'Lead', {
@@ -477,11 +500,13 @@ function trackFormSubmission() {
 
 function getStepName(step) {
     const stepNames = {
-        1: 'Welcome',
-        2: 'Financing Type',
-        3: 'Financing Details',
-        4: 'Contact Information',
-        5: 'Thank You'
+        1: 'Start',
+        2: 'Finanzierungsart',
+        3: 'Details',
+        4: 'Raten-Prüfung',
+        5: 'Zeitplan',
+        6: 'Kontakt',
+        7: 'Danke'
     };
     return stepNames[step] || 'Unknown';
 }

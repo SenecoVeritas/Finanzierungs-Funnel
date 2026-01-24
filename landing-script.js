@@ -100,17 +100,16 @@ window.addEventListener('scroll', () => {
 function trackPageView() {
     console.log('Landing page viewed');
 
-    // Add your analytics tracking here
-    // Example: Google Analytics
-    // if (typeof gtag !== 'undefined') {
-    //     gtag('event', 'page_view', {
-    //         page_title: 'Finanzierungen Landing Page',
-    //         page_location: window.location.href,
-    //         page_path: window.location.pathname
-    //     });
-    // }
+    // Google Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            page_title: 'Finanzierungen Landing Page',
+            page_location: window.location.href,
+            page_path: window.location.pathname
+        });
+    }
 
-    // Example: Facebook Pixel
+    // Facebook Pixel (optional - uncomment if needed)
     // if (typeof fbq !== 'undefined') {
     //     fbq('track', 'PageView');
     // }
@@ -120,16 +119,16 @@ function trackCTAClick(ctaName) {
     console.log('CTA clicked:', ctaName);
 
     // Track CTA clicks
-    // if (typeof gtag !== 'undefined') {
-    //     gtag('event', 'cta_click', {
-    //         cta_name: ctaName,
-    //         event_category: 'engagement'
-    //     });
-    // }
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'cta_click', {
+            cta_name: ctaName,
+            event_category: 'engagement'
+        });
+    }
 }
 
 // Add click tracking to CTA buttons
-document.querySelectorAll('a[href*="index.html"], a[href*="#funnel"]').forEach(button => {
+document.querySelectorAll('a[href*="rechner.html"], a[href*="#funnel"]').forEach(button => {
     button.addEventListener('click', function() {
         trackCTAClick(this.textContent.trim());
     });
@@ -141,12 +140,12 @@ document.querySelectorAll('.faq-question').forEach(question => {
         const questionText = this.querySelector('span').textContent;
         console.log('FAQ clicked:', questionText);
 
-        // if (typeof gtag !== 'undefined') {
-        //     gtag('event', 'faq_interaction', {
-        //         question: questionText,
-        //         event_category: 'engagement'
-        //     });
-        // }
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'faq_interaction', {
+                question: questionText,
+                event_category: 'engagement'
+            });
+        }
     });
 });
 
@@ -168,11 +167,11 @@ if ('loading' in HTMLImageElement.prototype) {
 }
 
 // Prefetch funnel page on hover over CTA buttons
-document.querySelectorAll('a[href*="index.html"]').forEach(link => {
+document.querySelectorAll('a[href*="rechner.html"]').forEach(link => {
     link.addEventListener('mouseenter', function() {
         const linkElement = document.createElement('link');
         linkElement.rel = 'prefetch';
-        linkElement.href = 'index.html';
+        linkElement.href = 'rechner.html';
         document.head.appendChild(linkElement);
     }, { once: true });
 });
