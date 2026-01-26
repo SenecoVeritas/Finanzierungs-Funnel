@@ -673,6 +673,24 @@ section {
     align-items: center;
 }
 
+.timeline-icon {
+    width: 120px;
+    height: 120px;
+    stroke: var(--primary-color);
+    stroke-width: 1.5;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(88, 117, 146, 0.08), rgba(204, 219, 231, 0.15));
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(88, 117, 146, 0.15);
+    transition: all 0.4s ease;
+}
+
+.timeline-item:hover .timeline-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 30px rgba(88, 117, 146, 0.25);
+    stroke: var(--primary-dark);
+}
+
 /* ==========================================
    CTA Section
    ========================================== */
