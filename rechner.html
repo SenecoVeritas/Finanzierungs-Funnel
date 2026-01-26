@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finanzierungs-Rechner | Ihr Finanzexperte</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZVEE3MWQQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5ZVEE3MWQQ');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="rechner-page">
     <div class="container">
@@ -82,10 +95,7 @@
                 <div class="options-grid">
                     <div class="option-card" onclick="selectFinancingType('kauf')">
                         <div class="option-icon">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
-                                <path d="M30 15L20 25H25V40H35V25H40L30 15Z" fill="#587592"/>
-                            </svg>
+                            <i data-lucide="home" class="lucide-icon"></i>
                         </div>
                         <h3 class="option-title">Kauf</h3>
                         <p class="option-description">Finanzierung für den Kauf einer Immobilie</p>
@@ -96,10 +106,7 @@
 
                     <div class="option-card" onclick="selectFinancingType('bau')">
                         <div class="option-icon">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
-                                <path d="M20 40V25L30 18L40 25V40H20Z" fill="#587592"/>
-                            </svg>
+                            <i data-lucide="hammer" class="lucide-icon"></i>
                         </div>
                         <h3 class="option-title">Bau/Errichtung</h3>
                         <p class="option-description">Finanzierung für Neubau oder Errichtung</p>
@@ -110,19 +117,7 @@
 
                     <div class="option-card" onclick="selectFinancingType('umschuldung')">
                         <div class="option-icon">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
-                                <!-- Kreislauf-Pfeile für Umschuldung -->
-                                <path d="M40 24C40 19 36 15 30 15C24 15 20 19 20 24" stroke="#587592" stroke-width="3" stroke-linecap="round"/>
-                                <path d="M20 36C20 41 24 45 30 45C36 45 40 41 40 36" stroke="#587592" stroke-width="3" stroke-linecap="round"/>
-                                <!-- Pfeilspitzen -->
-                                <path d="M17 24L20 21L23 24" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M43 36L40 39L37 36" stroke="#587592" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <!-- Euro Symbol in der Mitte -->
-                                <circle cx="30" cy="30" r="6" fill="#587592"/>
-                                <path d="M31 27H28M31 30H28M31 33H28" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                                <path d="M32 28C32 27 31.5 26 30 26C28.5 26 28 27 28 28C28 29 28 30 28 30C28 30 28 31 28 32C28 33 28.5 34 30 34C31.5 34 32 33 32 32" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                            </svg>
+                            <i data-lucide="refresh-cw" class="lucide-icon"></i>
                         </div>
                         <h3 class="option-title">Umschuldung</h3>
                         <p class="option-description">Optimierung bestehender Kredite</p>
@@ -133,21 +128,7 @@
 
                     <div class="option-card" onclick="selectFinancingType('sanierung')">
                         <div class="option-icon">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                                <circle cx="30" cy="30" r="28" fill="#F0F4F8"/>
-                                <!-- Haus-Silhouette im Hintergrund -->
-                                <path d="M20 32L30 22L40 32V42H20V32Z" stroke="#587592" stroke-width="2" fill="none" opacity="0.3"/>
-                                <!-- Hammer -->
-                                <rect x="22" y="33" width="3" height="12" fill="#587592" rx="1"/>
-                                <path d="M20 32L26 32L26 29L24 27L22 29L22 32L20 32Z" fill="#587592"/>
-                                <!-- Pinsel/Farbroller -->
-                                <rect x="34" y="26" width="3" height="14" fill="#587592" rx="1"/>
-                                <rect x="32" y="24" width="7" height="4" fill="#587592" rx="1"/>
-                                <!-- Renovierungs-Funken/Sterne -->
-                                <circle cx="28" cy="24" r="1.5" fill="#587592"/>
-                                <circle cx="38" cy="38" r="1.5" fill="#587592"/>
-                                <path d="M32 20L32.5 21.5L34 22L32.5 22.5L32 24L31.5 22.5L30 22L31.5 21.5L32 20Z" fill="#587592"/>
-                            </svg>
+                            <i data-lucide="wrench" class="lucide-icon"></i>
                         </div>
                         <h3 class="option-title">Sanierung</h3>
                         <p class="option-description">Finanzierung für Renovierung & Sanierung</p>
@@ -445,5 +426,10 @@
     </div>
 
     <script src="script.js"></script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>

@@ -313,6 +313,47 @@ body.rechner-page .footer-rs-logo {
 }
 
 /* ==========================================
+   Lucide Icons Styling
+   ========================================== */
+
+.lucide-icon {
+    width: 48px;
+    height: 48px;
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+}
+
+.option-icon .lucide-icon {
+    width: 48px;
+    height: 48px;
+    stroke: var(--primary-color);
+}
+
+/* Icon Container mit Gradient und Schatten */
+.option-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(88, 117, 146, 0.1), rgba(204, 219, 231, 0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    box-shadow: 0 4px 12px rgba(88, 117, 146, 0.15);
+    transition: all 0.3s ease;
+}
+
+.option-card:hover .option-icon {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(88, 117, 146, 0.25);
+}
+
+.option-card:hover .lucide-icon {
+    transform: rotate(10deg);
+    stroke: var(--primary-dark);
+}
+
+/* ==========================================
    Options Grid (Step 2)
    ========================================== */
 
@@ -344,10 +385,6 @@ body.rechner-page .footer-rs-logo {
     border-color: var(--primary-color);
     background-color: var(--background-lighter);
     box-shadow: 0 4px 16px rgba(88, 117, 146, 0.2);
-}
-
-.option-icon {
-    margin-bottom: var(--spacing-md);
 }
 
 .option-title {

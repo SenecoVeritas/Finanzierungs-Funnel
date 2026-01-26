@@ -319,6 +319,51 @@ section {
 }
 
 /* ==========================================
+   Lucide Icons Styling
+   ========================================== */
+
+.lucide-icon {
+    width: 48px;
+    height: 48px;
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+}
+
+.type-icon .lucide-icon,
+.benefit-icon .lucide-icon {
+    width: 48px;
+    height: 48px;
+    stroke: var(--primary-color);
+}
+
+/* Icon Container mit Gradient und Schatten */
+.type-icon,
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(88, 117, 146, 0.1), rgba(204, 219, 231, 0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    box-shadow: 0 4px 12px rgba(88, 117, 146, 0.15);
+    transition: all 0.3s ease;
+}
+
+.type-card:hover .type-icon,
+.benefit-card:hover .benefit-icon {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(88, 117, 146, 0.25);
+}
+
+.type-card:hover .lucide-icon,
+.benefit-card:hover .lucide-icon {
+    transform: rotate(10deg);
+    stroke: var(--primary-dark);
+}
+
+/* ==========================================
    Financing Types Section
    ========================================== */
 
@@ -345,10 +390,6 @@ section {
 .type-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
-}
-
-.type-icon {
-    margin-bottom: var(--spacing-md);
 }
 
 .type-title {
@@ -413,10 +454,6 @@ section {
     background-color: var(--secondary-color);
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
-}
-
-.benefit-icon {
-    margin-bottom: var(--spacing-md);
 }
 
 .benefit-title {
