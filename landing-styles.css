@@ -1262,7 +1262,8 @@ section {
     }
 
     .hero-background::before {
-        opacity: 0.15; /* Reduced from 0.3 for better contrast */
+        background: rgba(88, 117, 146, 0.6); /* Darkened for mobile readability */
+        opacity: 1;
     }
 
     .hero-badge {
