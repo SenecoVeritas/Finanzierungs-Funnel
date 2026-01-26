@@ -6,14 +6,20 @@
     <title>Finanzierungen - Ihr Schlüssel zur Eigentumsschaffung</title>
     <meta name="description" content="Finden Sie die ideale Finanzierung für Kauf, Bau, Umschuldung oder Sanierung. Beste Konditionen durch unabhängigen Vergleich.">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZVEE3MWQQ"></script>
+    <!-- Google tag (gtag.js) with Consent Mode -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+
+      // Default consent mode - deny until user accepts
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+
       gtag('js', new Date());
       gtag('config', 'G-5ZVEE3MWQQ');
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZVEE3MWQQ"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -701,6 +707,24 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                <h3 class="cookie-banner-title">🍪 Cookies & Datenschutz</h3>
+                <p class="cookie-banner-description">
+                    Wir verwenden Cookies und ähnliche Technologien, um Ihr Erlebnis zu verbessern und anonyme Nutzungsstatistiken zu erheben.
+                    Durch Klicken auf "Alle akzeptieren" stimmen Sie der Verwendung von Analyse-Cookies zu.
+                </p>
+            </div>
+            <div class="cookie-banner-actions">
+                <button onclick="acceptAllCookies()" class="btn-primary cookie-btn">Alle akzeptieren</button>
+                <button onclick="acceptNecessaryCookies()" class="btn-secondary cookie-btn">Nur notwendige</button>
+                <a href="cookie-richtlinie.html" class="cookie-link" target="_blank">Cookie-Richtlinie</a>
+            </div>
+        </div>
+    </div>
 
     <script src="landing-script.js"></script>
 

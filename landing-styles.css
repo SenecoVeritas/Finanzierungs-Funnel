@@ -1707,3 +1707,115 @@ section {
         font-size: 15px;
     }
 }
+
+
+/* ==========================================
+   Cookie Banner
+   ========================================== */
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--white) 0%, var(--background-lighter) 100%);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    padding: var(--spacing-lg) 0;
+    animation: slideUp 0.5s ease;
+    border-top: 3px solid var(--primary-color);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cookie-banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+}
+
+.cookie-banner-text {
+    flex: 1;
+}
+
+.cookie-banner-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.cookie-banner-description {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.cookie-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.cookie-btn {
+    white-space: nowrap;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.cookie-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.cookie-link:hover {
+    color: var(--primary-dark);
+}
+
+/* Mobile Cookie Banner */
+@media (max-width: 768px) {
+    .cookie-banner {
+        padding: var(--spacing-md) 0;
+    }
+
+    .cookie-banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cookie-banner-title {
+        font-size: 18px;
+    }
+
+    .cookie-banner-description {
+        font-size: 13px;
+    }
+
+    .cookie-banner-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cookie-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

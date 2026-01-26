@@ -177,20 +177,55 @@ document.querySelectorAll('a[href*="rechner.html"]').forEach(link => {
 });
 
 // ==========================================
-// Cookie Consent (Optional)
+// Cookie Consent Banner
 // ==========================================
 
-// If you need cookie consent functionality, add it here
 function checkCookieConsent() {
     const consent = localStorage.getItem('cookie_consent');
     if (!consent) {
-        // Show cookie banner
-        // showCookieBanner();
+        showCookieBanner();
+    } else if (consent === 'all') {
+        enableAnalytics();
+    }
+}
+
+function showCookieBanner() {
+    const banner = document.getElementById('cookieBanner');
+    if (banner) {
+        banner.style.display = 'block';
+    }
+}
+
+function hideCookieBanner() {
+    const banner = document.getElementById('cookieBanner');
+    if (banner) {
+        banner.style.display = 'none';
+    }
+}
+
+function acceptAllCookies() {
+    localStorage.setItem('cookie_consent', 'all');
+    enableAnalytics();
+    hideCookieBanner();
+}
+
+function acceptNecessaryCookies() {
+    localStorage.setItem('cookie_consent', 'necessary');
+    hideCookieBanner();
+}
+
+function enableAnalytics() {
+    // Google Analytics wird bereits im <head> geladen
+    // Diese Funktion ist für zukünftige Erweiterungen
+    if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+        });
     }
 }
 
 // Check on load
-// checkCookieConsent();
+checkCookieConsent();
 
 // ==========================================
 // Trust Section - Reviews Carousel

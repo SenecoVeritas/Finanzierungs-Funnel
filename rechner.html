@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finanzierungs-Rechner | Ihr Finanzexperte</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZVEE3MWQQ"></script>
+    <!-- Google tag (gtag.js) with Consent Mode -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+
+      // Default consent mode - deny until user accepts
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+
       gtag('js', new Date());
       gtag('config', 'G-5ZVEE3MWQQ');
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZVEE3MWQQ"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -430,6 +436,68 @@
     <!-- Initialize Lucide Icons -->
     <script>
         lucide.createIcons();
+    </script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>Cookie-Einstellungen</h3>
+                <p>Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und die Nutzung unserer Website zu analysieren. Sie können wählen, ob Sie alle Cookies akzeptieren oder nur die notwendigen Cookies verwenden möchten.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button onclick="acceptAllCookies()" class="cookie-btn cookie-btn-accept">Alle akzeptieren</button>
+                <button onclick="acceptNecessaryCookies()" class="cookie-btn cookie-btn-decline">Nur notwendige</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Script -->
+    <script>
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookie_consent');
+            if (!consent) {
+                showCookieBanner();
+            } else if (consent === 'all') {
+                enableAnalytics();
+            }
+        }
+
+        function showCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            if (banner) {
+                banner.style.display = 'block';
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+        }
+
+        function acceptAllCookies() {
+            localStorage.setItem('cookie_consent', 'all');
+            enableAnalytics();
+            hideCookieBanner();
+        }
+
+        function acceptNecessaryCookies() {
+            localStorage.setItem('cookie_consent', 'necessary');
+            hideCookieBanner();
+        }
+
+        function enableAnalytics() {
+            if (typeof gtag !== 'undefined') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            }
+        }
+
+        // Check on load
+        checkCookieConsent();
     </script>
 </body>
 </html>
